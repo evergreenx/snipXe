@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 @layer base {
   :root {
@@ -39,4 +40,9 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+body {
+
+  font-family: 'Nunito', sans-serif;
 }
