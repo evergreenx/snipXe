@@ -1,3 +1,4 @@
+import CanvasControl from "@/components/CanvasControl";
 import { GeistSans } from "geist/font/sans";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -15,5 +16,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="min-h-screen">{children}</main>;
+  return (
+    <main className="min-h-screen w-full ">
+      <div className="flex h-screen">
+        {children}
+
+
+<CanvasControl />
+
+      </div>
+    </main>
+  );
 }

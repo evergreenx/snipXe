@@ -3,8 +3,19 @@ import React from "react";
 
 export default function page() {
   return (
-    <>
-      <Sidebar></Sidebar>
-    </>
+    <div className="mt-[200px] pl-[400px]  ">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi praesentium
+      at veniam ullam incidunt repellat accusamus, aliquam deserunt eos velit
+      tenetur hic quasi nam architecto impedit, fugiat provident vel dolor.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi praesentium
+      at veniam ullam incidunt repellat accusamus, aliquam deserunt eos velit
+      tenetur hic quasi nam architecto impedit, fugiat provident vel dolor.    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi praesentium
+      at veniam ullam incidunt repellat accusamus, aliquam deserunt eos velit
+      tenetur hic quasi nam architecto impedit, fugiat provident vel dolor.    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi praesentium
+      at veniam ullam incidunt repellat accusamus, aliquam deserunt eos velit
+      tenetur hic quasi nam architecto impedit, fugiat provident vel dolor.    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi praesentium
+      at veniam ullam incidunt repellat accusamus, aliquam deserunt eos velit
+      tenetur hic quasi nam architecto impedit, fugiat provident vel dolor.
+    </div>
   );
 }

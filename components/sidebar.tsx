@@ -34,14 +34,14 @@ function Sidebar() {
   return (
     <aside
       className="w-[323px] pt-[112px]
-    
-    pb-[55px]
+      fixed
+    pb-[55px] z-[99]
     bg-primary h-screen"
     >
       <button
         className="bg-[#fff]  w-[163px]
 
-        mb-[97px]
+        mb-[97px]  
         mx-auto
 font-semibold rounded-lg flex items-center text
 px-[24px] py-[16px] text-primary"
@@ -71,15 +71,13 @@ px-[24px] py-[16px] text-primary"
             <Link
               href={link.link}
               className="text-white font-semibold
-              space-x-[4px]
+              space-x-[4px] items-center
           flex py-[16px] px-[80px] capitalize mb-[20px]
           "
             >
               <Image src={link.icon} alt={link.name} />
 
-              <p>
-              {link.name}
-                </p>
+              <p>{link.name}</p>
             </Link>
           );
         })}
