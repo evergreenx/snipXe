@@ -3,7 +3,10 @@
 import Sidebar from "@/components/sidebar";
 import React, { useEffect, useRef } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-okaidia.css";
+// import "prismjs/themes/prism-dark.css";
+import "../../style/dracula.css";
+import { useSelector } from "react-redux";
+import { RootState } from "@/sm/store";
 
 export default function page() {
   useEffect(() => {
@@ -31,24 +34,43 @@ export default function page() {
   };
 
   const preRef = useRef(null);
+
+ const countrol = useSelector((state: RootState)=> state.control.name)
   return (
-    <div className="mt-[200px]  mx-auto flex justify-center items-center w-full   ">
-      <div className=" w-[782px] bg-yellow-600  py-[51px] flex justify-center items-center px-[91px]">
-        <pre
-          className="  "
-          ref={preRef}
-          contentEditable
-          onInput={handleInput}
-          style={{
-            border: 0,
-            boxShadow: "none",
-            borderRadius: 0,
-            overflow: "visible",
-          }}
-        >
-          <code className="language-javascript"> {code}</code>
-        </pre>
+    <>
+      <div className="mt-[200px]  mx-auto flex  w-full ml-[400px]  ">
+
+        {}
+        <div className="">
+          <div className="content text-center">
+            <h2 className="font-bold text-[36px] text-primary">
+              🌈 Let’s create Magic! ✨ {countrol}
+            </h2>
+
+            <p className="font-medium text-lg my-[13px] text-primary">
+              Edit the frame below to create your magical Snipx
+            </p>
+          </div>
+
+          <div className=" w-[800px] bg-yellow-600  py-[51px] flex justify-center items-center px-[91px]">
+            <pre
+              className="  "
+              ref={preRef}
+              contentEditable
+              onInput={handleInput}
+              style={{
+                border: 0,
+                boxShadow: "none",
+                borderRadius: 0,
+                overflow: "hidden",
+            
+              }}
+            >
+              <code className="language-javascript"> {code}</code>
+            </pre>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

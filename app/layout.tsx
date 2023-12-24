@@ -3,6 +3,7 @@ import "./globals.css";
 import Sidebar from "@/components/sidebar";
 import Header from "@/components/Header";
 import CanvasControl from "@/components/CanvasControl";
+import { ReduxProvider } from "@/providers/ReduxProvider";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -21,15 +22,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <div className=" justify-between">
-          <Sidebar />
-          <Header />
+      <ReduxProvider>
+        <body className="bg-background text-foreground">
+          <div className=" justify-between">
+            <Sidebar />
+            <Header />
+          </div>
 
-        </div>
+          <main className="flex ">{children}</main>
+        </body>
+      </ReduxProvider>
 
-        <main className="flex ">{children}</main>
-      </body>
+      {/* </ReduxProvider> */}
     </html>
   );
 }

@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <main className="min-h-screen w-full ">
-      <div className=" h-screen">
+      <div className="flex h-screen">
         {children}
 
 <CanvasControl />
