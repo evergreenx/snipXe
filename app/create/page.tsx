@@ -35,7 +35,10 @@ export default function page() {
 
   const preRef = useRef(null);
 
- const countrol = useSelector((state: RootState)=> state.control.name)
+ const BG = useSelector((state: RootState)=> state.control.bg)
+
+ console.log(BG)
+
   return (
     <>
       <div className="mt-[200px]  mx-auto flex  w-full ml-[400px]  ">
@@ -44,7 +47,7 @@ export default function page() {
         <div className="">
           <div className="content text-center">
             <h2 className="font-bold text-[36px] text-primary">
-              🌈 Let’s create Magic! ✨ {countrol}
+              🌈 Let’s create Magic! ✨ 
             </h2>
 
             <p className="font-medium text-lg my-[13px] text-primary">
@@ -52,7 +55,9 @@ export default function page() {
             </p>
           </div>
 
-          <div className=" w-[800px] bg-yellow-600  py-[51px] flex justify-center items-center px-[91px]">
+          <div 
+          style={{ backgroundColor: BG?.hex  }}
+          className={` w-[800px]  py-[51px] flex justify-center items-center px-[91px]`}>
             <pre
               className="  "
               ref={preRef}

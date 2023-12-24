@@ -1,30 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Color , ColorResult, SketchPickerProps } from "react-color";
+
 
 export interface controlSliceState {
   value: number;
-  name: string
+  name: string;
+  theme: string;
+  mode: string;
+  bg:  ColorResult | undefined;
 }
 
+
+const defaultColorResult: ColorResult = {
+  hex: '#FFFFFF',
+  hsl: { h: 0, s: 0, l: 100 },
+  rgb: { r: 255, g: 255, b: 255 },
+};
+
 const initialState: controlSliceState = {
+  mode: "javascript",
+  theme: "material",
+  bg: defaultColorResult,
   value: 0,
-  name: 'john'
+  name: "john",
 };
 
 export const controlSlice = createSlice({
   name: "control",
   initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
+    handleBgUpdate: (state, action: PayloadAction<Color>) => {
+      if(state.bg) {
+        state.bg.hex = action.payload as string
+      };
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
+ 
+
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
@@ -32,6 +44,6 @@ export const controlSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = controlSlice.actions;
+export const { handleBgUpdate, incrementByAmount } = controlSlice.actions;
 
 export default controlSlice.reducer;
