@@ -5,6 +5,7 @@ import { useToggle } from "usehooks-ts";
 
 import BGControl from "./control/BGControl";
 import ThemeControl from "./control/ThemeControl";
+import LanguageControl from "./control/LanguageControl";
 
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(true);
@@ -81,6 +82,8 @@ function CanvasControl() {
             
 
               <ThemeControl />
+
+              <LanguageControl />
             </div>
 
 

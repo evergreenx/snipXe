@@ -4,13 +4,25 @@ import Sidebar from "@/components/sidebar";
 import React, { useEffect, useRef } from "react";
 import Prism from "prismjs";
 // import "prismjs/themes/prism-dark.css";
-import "../../style/dracula.css";
+// import "../../style/dracula.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 
 export default function page() {
   useEffect(() => {
     Prism.highlightAll();
+  }, []);
+
+  useEffect(() => {
+    import(`../../style/${'dracula'}.css`)
+      .then((themeModule) => {
+        // Theme CSS file loaded successfully
+        console.log(`Theme '${'dracula'}' CSS loaded successfully`);
+      })
+      .catch((error) => {
+        // Error handling if CSS file fails to load
+        console.error(`Error loading theme '${'dracula'}' CSS:`, error);
+      });
   }, []);
 
   const code = `
