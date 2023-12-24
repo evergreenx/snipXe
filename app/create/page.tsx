@@ -41,9 +41,9 @@ export default function page() {
 
   return (
     <>
-      <div className="mt-[200px]  mx-auto flex  w-full ml-[400px]  ">
+      <div className="mt-[200px]  mx-auto flex  w-full m-[10px] lg:ml-[400px]  ">
 
-        {}
+      
         <div className="">
           <div className="content text-center">
             <h2 className="font-bold text-[36px] text-primary">
@@ -57,7 +57,7 @@ export default function page() {
 
           <div 
           style={{ backgroundColor: BG?.hex  }}
-          className={` w-[800px]  py-[51px] flex justify-center items-center px-[91px]`}>
+          className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[91px]`}>
             <pre
               className="  "
               ref={preRef}

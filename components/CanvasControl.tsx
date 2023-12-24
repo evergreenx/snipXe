@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useToggle } from "usehooks-ts";
 
 import BGControl from "./control/BGControl";
+import ThemeControl from "./control/ThemeControl";
 
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(true);
-
 
   return (
     <div className="">
@@ -18,10 +18,10 @@ function CanvasControl() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`w-[323px] pt-[24px] relative  right-0  mt-[120px] pb-[55px] scroll-x overflow-y-auto bg-primary h-screen text-white px-[28px]`}
+            className={`w-[323px] pt-[24px] relative  right-0  mt-[120px] pb-[55px] scroll-x overflow-y-auto bg-primary h-screen text-white `}
           >
             <div
-              className="toogle cursor-pointer"
+              className="toogle cursor-pointer px-[28px]"
               onClick={() => {
                 setValue((x) => !x);
               }}
@@ -44,7 +44,9 @@ function CanvasControl() {
             </div>
 
             <div className="control">
-              <div className="name p-[28px] flex space-x-[8px]">
+
+              <div className="p-[28px]">
+              <div className="name mb-[20px]  flex space-x-[8px]">
                 <input
                   type="text"
                   placeholder="snipx name"
@@ -68,16 +70,21 @@ function CanvasControl() {
                     stroke-linejoin="round"
                   />
                 </svg>
+
+
               </div>
 
-              <div className="background mt-10">
-               
-              </div>
-
-
+       
 
               <BGControl />
+              </div>
+            
+
+              <ThemeControl />
             </div>
+
+
+            
           </motion.aside>
         )}
       </AnimatePresence>

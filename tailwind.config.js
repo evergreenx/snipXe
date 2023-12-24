@@ -9,6 +9,7 @@ module.exports = {
       colors: {
 
         primary: '#0D102A',
+        secondary: '#DDE1E1',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         btn: {

@@ -34,7 +34,9 @@ function Sidebar() {
   return (
     <aside
       className="w-[323px] pt-[112px]
-      fixed
+
+      hidden lg:block
+      lg:fixed
     pb-[55px] z-[99]
     bg-primary h-screen"
     >

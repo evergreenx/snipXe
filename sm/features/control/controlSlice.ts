@@ -13,9 +13,9 @@ export interface controlSliceState {
 
 
 const defaultColorResult: ColorResult = {
-  hex: '#FFFFFF',
-  hsl: { h: 0, s: 0, l: 100 },
-  rgb: { r: 255, g: 255, b: 255 },
+  hex: '#0000FF', // Hexadecimal value for blue
+  hsl: { h: 240, s: 100, l: 50 }, // Hue: 240 (blue), Saturation: 100%, Lightness: 50%
+  rgb: { r: 0, g: 0, b: 255 }, // Red:
 };
 
 const initialState: controlSliceState = {
