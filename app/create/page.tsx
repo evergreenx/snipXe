@@ -9,21 +9,26 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 
 export default function page() {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
+  const languageMode = useSelector((state: RootState) => state.control.mode);
+  const selectedTheme = useSelector((state: RootState) => state.control.theme);
+
+  console.log(selectedTheme)
 
   useEffect(() => {
-    import(`../../style/${'dracula'}.css`)
+    Prism.highlightAll();
+  }, [languageMode , selectedTheme]);
+
+  useEffect(() => {
+    import(`../../style/${selectedTheme}.css`)
       .then((themeModule) => {
         // Theme CSS file loaded successfully
-        console.log(`Theme '${'dracula'}' CSS loaded successfully`);
+        console.log(`Theme '${selectedTheme}' CSS loaded successfully`);
       })
       .catch((error) => {
         // Error handling if CSS file fails to load
-        console.error(`Error loading theme '${'dracula'}' CSS:`, error);
+        console.error(`Error loading theme '${selectedTheme}' CSS:`, error);
       });
-  }, []);
+  }, [selectedTheme , languageMode]);
 
   const code = `
     
@@ -47,19 +52,15 @@ export default function page() {
 
   const preRef = useRef(null);
 
- const BG = useSelector((state: RootState)=> state.control.bg)
-
- console.log(BG)
+  const BG = useSelector((state: RootState) => state.control.bg);
 
   return (
     <>
       <div className="mt-[200px]  mx-auto flex  w-full m-[10px] lg:ml-[400px]  ">
-
-      
         <div className="">
           <div className="content text-center">
             <h2 className="font-bold text-[36px] text-primary">
-              🌈 Let’s create Magic! ✨ 
+              🌈 Let’s create Magic! ✨
             </h2>
 
             <p className="font-medium text-lg my-[13px] text-primary">
@@ -67,9 +68,10 @@ export default function page() {
             </p>
           </div>
 
-          <div 
-          style={{ backgroundColor: BG?.hex  }}
-          className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[91px]`}>
+          <div
+            style={{ backgroundColor: BG?.hex }}
+            className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[91px]`}
+          >
             <pre
               className="  "
               ref={preRef}
@@ -80,10 +82,9 @@ export default function page() {
                 boxShadow: "none",
                 borderRadius: 0,
                 overflow: "hidden",
-            
               }}
             >
-              <code className="language-javascript"> {code}</code>
+              <code className={`language-${languageMode}`}> {code}</code>
             </pre>
           </div>
         </div>

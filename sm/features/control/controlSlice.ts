@@ -20,7 +20,7 @@ const defaultColorResult: ColorResult = {
 
 const initialState: controlSliceState = {
   mode: "javascript",
-  theme: "material",
+  theme: "prism-duotone-dark",
   bg: defaultColorResult,
   value: 0,
   name: "john",
@@ -35,15 +35,23 @@ export const controlSlice = createSlice({
         state.bg.hex = action.payload as string
       };
     },
+
+    handleLanguageModeUpdate: (state, action: PayloadAction<string>) => {
+    state.mode = action.payload
+    },
+
+    handleThemeUpdate: (state, action: PayloadAction<string>) => {
+      state.theme = action.payload
+      },
  
 
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+      state.value = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { handleBgUpdate, incrementByAmount } = controlSlice.actions;
+export const { handleBgUpdate, incrementByAmount , handleLanguageModeUpdate , handleThemeUpdate } = controlSlice.actions;
 
 export default controlSlice.reducer;
