@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@types/node": "20.3.1",
-    "@types/prismjs": "^1.26.3",
     "@types/react": "18.2.8",
     "@types/react-color": "^3.0.10",
     "@types/react-dom": "18.2.5",

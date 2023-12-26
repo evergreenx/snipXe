@@ -87,6 +87,8 @@ export default function page() {
 
   const editor: Ref<any> = useRef();
 
+  const Padding = useSelector((state: RootState) => state.control.p);
+
   const { setContainer, state, setView } = useCodeMirror({
     container: editor.current,
     extensions,
@@ -98,7 +100,7 @@ export default function page() {
       foldGutter: false,
     },
     value: code,
-    width: "700px",
+    width: "auto",
     height: "300px",
     theme: theme,
   });
@@ -132,8 +134,11 @@ export default function page() {
           </div>
 
           <div
-            style={{ backgroundColor: BG?.hex }}
-            className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[15px]`}
+            style={{
+              backgroundColor: BG?.hex,
+              padding: `${Padding.v}px ${Padding.h}px`,
+            }}
+            className={` lg:w-[800px] w-full flex justify-center items-center `}
           >
             {/* code mirror */}
             <div ref={editor} />

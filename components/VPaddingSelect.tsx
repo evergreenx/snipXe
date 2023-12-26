@@ -8,39 +8,67 @@ import {
 } from "@radix-ui/react-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
-import { handleThemeUpdate } from "@/sm/features/control/controlSlice";
+import {  handleVPaddingUpdate } from "@/sm/features/control/controlSlice";
 
-const ThemeSelect = ({ data }: { data: any[] }) => {
+const VPaddingSelect = () => {
   const dispatch = useDispatch();
 
-  const selectedTheme = useSelector((state: RootState) => state.control.theme);
+  const data = [
+    {
+      value: "1",
+      placeholder: 1,
+    },
 
-  const handleSelectedTheme = (value: string) => {
-    dispatch(handleThemeUpdate(value));
+    {
+      value: "5",
+      placeholder: 5,
+    },
+
+    {
+      value: "10",
+      placeholder: 10,
+    },
+    {
+      value: "15",
+      placeholder: 15,
+    },
+  ];
+
+  const selectedVPadding = useSelector((state: RootState) => state.control.p);
+
+  const handleSelectedVPadding = (value: string) => {
+    dispatch(handleVPaddingUpdate(value));
+    setValue(value);
   };
 
+  const [value, setValue] = React.useState(selectedVPadding.v);
   return (
     <Select.Root
-      onValueChange={handleSelectedTheme}
-      defaultValue={selectedTheme}
+      onValueChange={handleSelectedVPadding}
+      defaultValue={selectedVPadding.v}
+      value={value}
     >
       <Select.Trigger
-        className="inline-flex mt-[20px] items-center justify-between rounded py-[8px] px-[16px] text-base font-semibold leading-none h-[35px] gap-[5px] bg-transparent text-secondary border-[0.5px] border-[#DDE1E1] w-full outline-none"
-        aria-label="theme"
+        className="inline-flex w-[77px] pl-4 text-center  items-center justify-between rounded   text-base font-semibold leading-none   bg-transparent text-secondary border-[0.5px] border-[#DDE1E1] outline-none"
+        aria-label="vpadding"
       >
-        <Select.Value placeholder="Select theme" />
-        <Select.Icon>
+        <Select.Value
+          aria-label={value}
+          className=""
+          placeholder="Select vpadding"
+        ></Select.Value>
+        <Select.Icon className="bg-[#7789A9] rounded-r w-[28px] flex justify-center items-center h-[28px]">
           <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M6 9L12 15L18 9"
+              d="M5 7.49996L10 12.5L15 7.49996"
               stroke="#DDE1E1"
-              stroke-width="2"
+              stroke-width="1.4"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
@@ -54,12 +82,8 @@ const ThemeSelect = ({ data }: { data: any[] }) => {
           </Select.ScrollUpButton>
           <Select.Viewport className="p-[5px]">
             <Select.Group>
-              {/* <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
-              Fruits
-            </Select.Label> */}
-
               {data.map((i) => {
-                return <SelectItem value={i.value}>{i.name}</SelectItem>;
+                return <SelectItem value={i.value}>{i.placeholder}</SelectItem>;
               })}
             </Select.Group>
           </Select.Viewport>
@@ -100,4 +124,4 @@ const SelectItem = React.forwardRef(
   }
 );
 
-export default ThemeSelect;
+export default VPaddingSelect;

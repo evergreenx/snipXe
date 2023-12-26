@@ -8,6 +8,10 @@ export interface controlSliceState {
   theme: string;
   mode: string;
   bg: ColorResult | undefined;
+  p: {
+    v: string;
+    h: string;
+  };
 }
 
 const defaultColorResult: ColorResult = {
@@ -22,6 +26,10 @@ const initialState: controlSliceState = {
   bg: defaultColorResult,
   value: 0,
   name: "john",
+  p: {
+    v: "5",
+    h: "5",
+  },
 };
 
 export const controlSlice = createSlice({
@@ -42,8 +50,12 @@ export const controlSlice = createSlice({
       state.theme = action.payload;
     },
 
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value = action.payload;
+    handleVPaddingUpdate: (state, action: PayloadAction<string>) => {
+      state.p.v = action.payload;
+    },
+
+    handleHPaddingUpdate: (state, action: PayloadAction<string>) => {
+      state.p.h = action.payload;
     },
   },
 });
@@ -51,9 +63,10 @@ export const controlSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   handleBgUpdate,
-  incrementByAmount,
   handleLanguageModeUpdate,
   handleThemeUpdate,
+  handleVPaddingUpdate,
+  handleHPaddingUpdate,
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

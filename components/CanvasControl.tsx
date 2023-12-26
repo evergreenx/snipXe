@@ -6,6 +6,7 @@ import { useToggle } from "usehooks-ts";
 import BGControl from "./control/BGControl";
 import ThemeControl from "./control/ThemeControl";
 import LanguageControl from "./control/LanguageControl";
+import PaddingControl from "./control/PaddingControl";
 
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(true);
@@ -78,6 +79,8 @@ function CanvasControl() {
               <ThemeControl />
 
               <LanguageControl />
+
+              <PaddingControl />
             </div>
           </motion.aside>
         )}

@@ -2,6 +2,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import controlSlice from './features/control/controlSlice'
 
+
+
 export const store = configureStore({
   reducer: {
     control: controlSlice
