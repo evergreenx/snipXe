@@ -3,6 +3,15 @@
 import Sidebar from "@/components/sidebar";
 import React, { useEffect, useRef } from "react";
 import Prism from "prismjs";
+
+import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
+import { javascript } from "@codemirror/lang-javascript";
+import { python } from "@codemirror/lang-python";
+
+import { dracula } from "@uiw/codemirror-theme-dracula";
+import { darcula } from "@uiw/codemirror-theme-darcula";
+import { abyss } from "@uiw/codemirror-theme-abyss";
+
 // import "prismjs/themes/prism-dark.css";
 // import "../../style/dracula.css";
 import { useSelector } from "react-redux";
@@ -12,27 +21,15 @@ export default function page() {
   const languageMode = useSelector((state: RootState) => state.control.mode);
   const selectedTheme = useSelector((state: RootState) => state.control.theme);
 
-  console.log(selectedTheme)
+  console.log(languageMode);
 
-  useEffect(() => {
-    Prism.highlightAll();
-  }, [languageMode , selectedTheme]);
+  const [value, setValue] = React.useState(
+    "const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)const unfold = (f, seed) => {const go = (f, seed, acc) => {const res = f(seed)return res ? go(f, res[1], acc.concat([res[0]])) : acc}"
+  );
 
-  useEffect(() => {
-    import(`../../style/${selectedTheme}.css`)
-      .then((themeModule) => {
-        // Theme CSS file loaded successfully
-        console.log(`Theme '${selectedTheme}' CSS loaded successfully`);
-      })
-      .catch((error) => {
-        // Error handling if CSS file fails to load
-        console.error(`Error loading theme '${selectedTheme}' CSS:`, error);
-      });
-  }, [selectedTheme , languageMode]);
+  let extensions;
 
-  const code = `
-    
-  const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
+  let code = `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 
   const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
   
@@ -43,8 +40,76 @@ export default function page() {
     }
     return go(f, seed, [])
   }
-  
     `;
+
+  switch (languageMode) {
+    case "javascript":
+      extensions = [javascript()];
+
+      break;
+    case "python":
+      extensions = [python()];
+
+      break;
+    // Add other cases for different language modes as needed
+
+    default:
+      // Default to JavaScript if language mode is not recognized
+      extensions = [javascript({ jsx: true })];
+
+      break;
+  }
+
+  let theme = undefined;
+  console.log(theme)
+  switch (selectedTheme) {
+    case "dracula":
+      theme= dracula ;
+
+      break;
+
+      case "darcula":
+        theme= darcula ;
+  
+        break;
+    case "abyss":
+      theme= abyss ;
+
+      break;
+    // Add other cases for different language modes as needed
+
+    default:
+      // Default to JavaScript if language mode is not recognized
+      theme = dracula ;
+
+      break;
+  }
+
+  const editor = useRef();
+
+  console.log(extensions);
+  const { setContainer, state, setView } = useCodeMirror({
+    container: editor.current,
+    extensions,
+
+    basicSetup: {
+      lineNumbers: false,
+      highlightActiveLine: false,
+      highlightActiveLineGutter: false,
+      foldGutter : false,
+      
+    },
+    value: code,
+    width: "700px",
+    height: "300px",
+    theme: theme
+  });
+
+  useEffect(() => {
+    if (editor.current) {
+      setContainer(editor.current);
+    }
+  }, [editor.current, languageMode , selectedTheme]);
 
   const handleInput = () => {
     Prism.highlightAll(); // Call Prism to highlight code on input changes
@@ -70,22 +135,14 @@ export default function page() {
 
           <div
             style={{ backgroundColor: BG?.hex }}
-            className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[91px]`}
+            className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[15px]`}
           >
-            <pre
-              className="  "
-              ref={preRef}
-              contentEditable
-              onInput={handleInput}
-              style={{
-                border: 0,
-                boxShadow: "none",
-                borderRadius: 0,
-                overflow: "hidden",
-              }}
-            >
-              <code className={`language-${languageMode}`}> {code}</code>
-            </pre>
+            <div ref={editor} />
+            {/* <CodeMirror value={value} height="200px"  
+          
+           width="700px"
+           theme={dracula}
+          extensions={[javascript({ jsx: true })]} onChange={onChange} /> */}
           </div>
         </div>
       </div>

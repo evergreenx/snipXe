@@ -20,7 +20,7 @@ const defaultColorResult: ColorResult = {
 
 const initialState: controlSliceState = {
   mode: "javascript",
-  theme: "prism-duotone-dark",
+  theme: "dracula",
   bg: defaultColorResult,
   value: 0,
   name: "john",
