@@ -22,10 +22,10 @@ function CanvasControl() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`w-[323px] pt-[24px] absolute lg:relative  right-0  mt-[120px] pb-[55px] scroll-x overflow-y-scroll bg-primary h-full text-white `}
+            className={`w-[323px] pt-[24px] absolute lg:relative  right-0  mt-[120px] pb-[105px] scroll-x overflow-y-scroll bg-primary h-full text-white `}
           >
             <div
-              className="toogle cursor-pointer px-[28px]"
+              className="toogle w-[10px] cursor-pointer px-[28px]"
               onClick={() => {
                 setValue((x) => !x);
               }}
@@ -54,7 +54,7 @@ function CanvasControl() {
                     type="text"
                     placeholder="snipx name"
                     defaultValue={"UNTITLED SNIPX"}
-                    className=" text-[#DDE1E1] w-[80%] border-b font-semibold text-lg bg-transparent outline-none border-b-white"
+                    className=" text-[#DDE1E1] w-[80%]   border-b font-semibold text-lg bg-transparent outline-none border-b-white"
                   />
 
                   <svg
@@ -83,6 +83,8 @@ function CanvasControl() {
               <LanguageControl />
 
               <PaddingControl />
+     
+
             </div>
           </motion.aside>
         )}
