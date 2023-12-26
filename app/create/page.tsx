@@ -110,9 +110,7 @@ export default function page() {
     }
   }, [editor.current, languageMode, selectedTheme]);
 
-  const handleInput = () => {
-    Prism.highlightAll(); // Call Prism to highlight code on input changes
-  };
+ 
 
   const preRef = useRef(null);
 
