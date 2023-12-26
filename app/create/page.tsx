@@ -2,7 +2,6 @@
 
 import Sidebar from "@/components/sidebar";
 import React, { Ref, useEffect, useRef } from "react";
-import Prism from "prismjs";
 
 import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
