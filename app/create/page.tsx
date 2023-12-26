@@ -100,7 +100,7 @@ export default function page() {
       foldGutter: false,
     },
     value: code,
-    width: matches ? "auto" : "200px",
+    width: matches ? "auto" : "300px",
 
     height: matches ? "auto" : "auto",
     theme: theme,

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useToggle } from "usehooks-ts";
+import { useToggle ,useMediaQuery } from "usehooks-ts";
 
 import BGControl from "./control/BGControl";
 import ThemeControl from "./control/ThemeControl";
@@ -9,7 +9,9 @@ import LanguageControl from "./control/LanguageControl";
 import PaddingControl from "./control/PaddingControl";
 
 function CanvasControl() {
-  const [value, toggle, setValue] = useToggle(true);
+  const [value, toggle, setValue] = useToggle(false);
+
+  const matches = useMediaQuery('(min-width: 768px)')
 
   return (
     <div className="">
