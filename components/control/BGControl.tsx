@@ -52,7 +52,7 @@ export default function BGControl() {
       </div>
 
       {value ? (
-        <div ref={ref} className="">
+        <div ref={ref} className="absolute">
           <ChromePicker
             color={colorBG}
             onChange={(color) => handleChangeBgColor(color)}

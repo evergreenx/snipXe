@@ -20,7 +20,7 @@ function CanvasControl() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`w-[323px] pt-[24px] absolute lg:relative  right-0  mt-[120px] pb-[55px] scroll-x overflow-y-auto bg-primary h-full text-white `}
+            className={`w-[323px] pt-[24px] absolute lg:relative  right-0  mt-[120px] pb-[55px] scroll-x overflow-y-scroll bg-primary h-full text-white `}
           >
             <div
               className="toogle cursor-pointer px-[28px]"

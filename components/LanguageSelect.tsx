@@ -48,7 +48,7 @@ const LanguageSelect = ({ data }: { data: any[] }) => {
       </Select.Trigger>
       <Select.Portal>
         <Select.Content className="overflow-hidden bg-white rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
-          <Select.ScrollUpButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
+          <Select.ScrollUpButton className="flex items-center justify-center h-[25px] bg-white text-black cursor-default">
             <ChevronUpIcon />
           </Select.ScrollUpButton>
           <Select.Viewport className="p-[5px]">
@@ -62,7 +62,7 @@ const LanguageSelect = ({ data }: { data: any[] }) => {
               })}
             </Select.Group>
           </Select.Viewport>
-          <Select.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white text-violet11 cursor-default">
+          <Select.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white text-black cursor-default">
             <ChevronDownIcon />
           </Select.ScrollDownButton>
         </Select.Content>
@@ -84,7 +84,7 @@ const SelectItem = React.forwardRef(
       <Select.Item
         value={value}
         className={classnames(
-          "text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+          "text-[13px] leading-none text-black rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
         )}
         {...props}
         ref={forwardedRef}
