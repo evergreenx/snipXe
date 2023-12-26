@@ -2,6 +2,7 @@
 
 import Sidebar from "@/components/sidebar";
 import React, { Ref, useEffect, useRef } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -19,7 +20,7 @@ import { RootState } from "@/sm/store";
 export default function page() {
   const languageMode = useSelector((state: RootState) => state.control.mode);
   const selectedTheme = useSelector((state: RootState) => state.control.theme);
-
+  const matches = useMediaQuery("(min-width: 768px)");
   console.log(languageMode);
 
   const [value, setValue] = React.useState(
@@ -99,8 +100,9 @@ export default function page() {
       foldGutter: false,
     },
     value: code,
-    width: "auto",
-    height: "300px",
+    width: matches ? "auto" : "200px",
+
+    height: matches ? "auto" : "auto",
     theme: theme,
   });
 
@@ -109,8 +111,6 @@ export default function page() {
       setContainer(editor.current);
     }
   }, [editor.current, languageMode, selectedTheme]);
-
- 
 
   const preRef = useRef(null);
 
