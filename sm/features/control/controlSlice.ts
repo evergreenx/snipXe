@@ -1,19 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Color , ColorResult, SketchPickerProps } from "react-color";
-
+import { Color, ColorResult, SketchPickerProps } from "react-color";
 
 export interface controlSliceState {
   value: number;
   name: string;
   theme: string;
   mode: string;
-  bg:  ColorResult | undefined;
+  bg: ColorResult | undefined;
 }
 
-
 const defaultColorResult: ColorResult = {
-  hex: '#0000FF', // Hexadecimal value for blue
+  hex: "#cacad7", // Hexadecimal value for blue
   hsl: { h: 240, s: 100, l: 50 }, // Hue: 240 (blue), Saturation: 100%, Lightness: 50%
   rgb: { r: 0, g: 0, b: 255 }, // Red:
 };
@@ -31,19 +29,18 @@ export const controlSlice = createSlice({
   initialState,
   reducers: {
     handleBgUpdate: (state, action: PayloadAction<Color>) => {
-      if(state.bg) {
-        state.bg.hex = action.payload as string
-      };
+      if (state.bg) {
+        state.bg.hex = action.payload as string;
+      }
     },
 
     handleLanguageModeUpdate: (state, action: PayloadAction<string>) => {
-    state.mode = action.payload
+      state.mode = action.payload;
     },
 
     handleThemeUpdate: (state, action: PayloadAction<string>) => {
-      state.theme = action.payload
-      },
- 
+      state.theme = action.payload;
+    },
 
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value = action.payload;
@@ -52,6 +49,11 @@ export const controlSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { handleBgUpdate, incrementByAmount , handleLanguageModeUpdate , handleThemeUpdate } = controlSlice.actions;
+export const {
+  handleBgUpdate,
+  incrementByAmount,
+  handleLanguageModeUpdate,
+  handleThemeUpdate,
+} = controlSlice.actions;
 
 export default controlSlice.reducer;

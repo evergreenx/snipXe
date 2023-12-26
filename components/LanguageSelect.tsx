@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes, ReactNode, Ref } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
 import {
@@ -71,13 +71,20 @@ const LanguageSelect = ({ data }: { data: any[] }) => {
   );
 };
 
+interface SelectItemProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode | any;
+  value: string;
+}
 const SelectItem = React.forwardRef(
-  ({ children, className, ...props }, forwardedRef) => {
+  (
+    { children, value, ...props }: SelectItemProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
     return (
       <Select.Item
+        value={value}
         className={classnames(
-          "text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1",
-          className
+          "text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] pr-[35px] pl-[25px] relative select-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
         )}
         {...props}
         ref={forwardedRef}

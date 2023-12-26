@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes, ReactNode, Ref } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
 import {
@@ -72,8 +72,14 @@ const ThemeSelect = ({ data }: { data: any[] }) => {
   );
 };
 
+
+interface SelectItemProps extends HTMLAttributes<HTMLDivElement> {
+    children?: ReactNode | any;
+    value: string;
+  }
+
 const SelectItem = React.forwardRef(
-  ({ children, className, ...props }, forwardedRef) => {
+  ({ children, className, ...props } :SelectItemProps, forwardedRef: Ref<HTMLDivElement>) => {
     return (
       <Select.Item
         className={classnames(

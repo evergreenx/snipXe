@@ -1,7 +1,7 @@
 "use client";
 
 import Sidebar from "@/components/sidebar";
-import React, { useEffect, useRef } from "react";
+import React, { Ref, useEffect, useRef } from "react";
 import Prism from "prismjs";
 
 import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
@@ -61,33 +61,32 @@ export default function page() {
   }
 
   let theme = undefined;
-  console.log(theme)
+  console.log(theme);
   switch (selectedTheme) {
     case "dracula":
-      theme= dracula ;
+      theme = dracula;
 
       break;
 
-      case "darcula":
-        theme= darcula ;
-  
-        break;
+    case "darcula":
+      theme = darcula;
+
+      break;
     case "abyss":
-      theme= abyss ;
+      theme = abyss;
 
       break;
     // Add other cases for different language modes as needed
 
     default:
       // Default to JavaScript if language mode is not recognized
-      theme = dracula ;
+      theme = dracula;
 
       break;
   }
 
-  const editor = useRef();
+  const editor: Ref<any> = useRef();
 
-  console.log(extensions);
   const { setContainer, state, setView } = useCodeMirror({
     container: editor.current,
     extensions,
@@ -96,20 +95,19 @@ export default function page() {
       lineNumbers: false,
       highlightActiveLine: false,
       highlightActiveLineGutter: false,
-      foldGutter : false,
-      
+      foldGutter: false,
     },
     value: code,
     width: "700px",
     height: "300px",
-    theme: theme
+    theme: theme,
   });
 
   useEffect(() => {
     if (editor.current) {
       setContainer(editor.current);
     }
-  }, [editor.current, languageMode , selectedTheme]);
+  }, [editor.current, languageMode, selectedTheme]);
 
   const handleInput = () => {
     Prism.highlightAll(); // Call Prism to highlight code on input changes
@@ -137,12 +135,8 @@ export default function page() {
             style={{ backgroundColor: BG?.hex }}
             className={` lg:w-[800px] w-full  py-[51px] flex justify-center items-center px-[15px]`}
           >
+            {/* code mirror */}
             <div ref={editor} />
-            {/* <CodeMirror value={value} height="200px"  
-          
-           width="700px"
-           theme={dracula}
-          extensions={[javascript({ jsx: true })]} onChange={onChange} /> */}
           </div>
         </div>
       </div>
