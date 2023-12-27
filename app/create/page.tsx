@@ -160,7 +160,7 @@ export default function page() {
                   // fontSize: "16px",
                   borderRadius: "20px",
                   display: "block",
-                  fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+                  fontFamily: "",
                 }}
                 ref={editor}
               />

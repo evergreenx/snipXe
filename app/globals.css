@@ -45,7 +45,7 @@
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow: hidden;
 }
 body,
@@ -54,14 +54,20 @@ html {
   margin: 0;
 }
 
-
+.ͼ1 .cm-scroller {
+  font-family: "Roboto", sans-serif;
+}
 .cm-editor {
   border: 0;
-  position: absolute;
+
   border-radius: 8px;
   height: 100%;
   line-height: 133%;
   overflow: hidden;
+  padding: 18px 18px;
+    padding-left: 12px;
+    height: auto;
+    min-width: inherit;
 }
 .cm-editor.cm-focused {
   border: none !important;
