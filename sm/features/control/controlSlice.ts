@@ -12,6 +12,7 @@ export interface controlSliceState {
     v: string;
     h: string;
   };
+  font: string
 }
 
 const defaultColorResult: ColorResult = {
@@ -27,9 +28,10 @@ const initialState: controlSliceState = {
   value: 0,
   name: "john",
   p: {
-    v: "5",
-    h: "5",
+    v: "15",
+    h: "15",
   },
+  font: 'Roboto, sans-serif'
 };
 
 export const controlSlice = createSlice({
@@ -57,6 +59,9 @@ export const controlSlice = createSlice({
     handleHPaddingUpdate: (state, action: PayloadAction<string>) => {
       state.p.h = action.payload;
     },
+    handleFontUpdate: (state, action: PayloadAction<string>) => {
+      state.font = action.payload;
+    },
   },
 });
 
@@ -67,6 +72,7 @@ export const {
   handleThemeUpdate,
   handleVPaddingUpdate,
   handleHPaddingUpdate,
+  handleFontUpdate
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

@@ -18,8 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <main className="min-h-screen w-full bg-white ">
-      <div className="flex h-screen bg-wh">
+      <div className="flex ">
+        <div className=" pb-[100px]">
         {children}
+        </div>
+     
 
 <CanvasControl />
 

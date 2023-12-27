@@ -1,3 +1,4 @@
+"use client";
 import React, { HTMLAttributes, ReactNode, Ref } from "react";
 import * as Select from "@radix-ui/react-select";
 import classnames from "classnames";
@@ -9,88 +10,46 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import {
-  handleHPaddingUpdate,
-  handleVPaddingUpdate,
+  handleFontUpdate,
+  handleThemeUpdate,
 } from "@/sm/features/control/controlSlice";
 
-const HPaddingSelect = () => {
+const FontSelect = ({ data }: { data: any[] }) => {
   const dispatch = useDispatch();
 
-  const data = [
-    {
-      value: "1",
-      placeholder: 1,
-    },
-    {
-      value: "15",
-      placeholder: 15,
-    },
-    {
-      value: "20",
-      placeholder: 20,
-    },
+  const selectedFont = useSelector((state: RootState) => state.control.font);
 
-    {
-      value: "25",
-      placeholder: 25,
-    },
-    {
-      value: "30",
-      placeholder: 30,
-    },
-    {
-      value: "35",
-      placeholder: 35,
-    },
-    {
-      value: "40",
-      placeholder: 40,
-    },
-    {
-      value: "45",
-      placeholder: 45,
-    },
-    {
-      value: "50",
-      placeholder: 55,
-    },
-  ];
+  console.log(selectedFont, "test");
 
-  const selectedHPadding = useSelector((state: RootState) => state.control.p);
-
-  const handleSelectedHPadding = (value: string) => {
-    dispatch(handleHPaddingUpdate(value));
-    setValue(value);
+  const handleSelectedFont = (value: string) => {
+    dispatch(handleFontUpdate(value));
+    setValue(value)
   };
 
-  const [value, setValue] = React.useState(selectedHPadding.h);
+  const [value, setValue] = React.useState(selectedFont);
+
+
   return (
-    <Select.Root
-      onValueChange={handleSelectedHPadding}
-      defaultValue={selectedHPadding.v}
-      value={value}
-    >
+    <Select.Root 
+    value={value}
+    onValueChange={handleSelectedFont} defaultValue={selectedFont}>
       <Select.Trigger
-        className="inline-flex w-[77px] pl-4 text-center  items-center justify-between rounded   text-base font-semibold leading-none   bg-transparent text-secondary border-[0.5px] border-[#DDE1E1] outline-none"
-        aria-label="vpadding"
+        className="inline-flex mt-[20px] items-center justify-between rounded py-[8px] px-[16px] text-base font-semibold leading-none h-[35px] gap-[5px] bg-transparent text-secondary border-[0.5px] border-[#DDE1E1] w-full outline-none"
+        aria-label="theme"
       >
-        <Select.Value
-          aria-label={value}
-          className=""
-          placeholder="Select vpadding"
-        ></Select.Value>
-        <Select.Icon className="bg-[#7789A9] rounded-r w-[28px] flex justify-center items-center h-[28px]">
+        <Select.Value placeholder="Select font" />
+        <Select.Icon>
           <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M5 7.49996L10 12.5L15 7.49996"
+              d="M6 9L12 15L18 9"
               stroke="#DDE1E1"
-              stroke-width="1.4"
+              stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
@@ -105,7 +64,7 @@ const HPaddingSelect = () => {
           <Select.Viewport className="p-[5px]">
             <Select.Group>
               {data.map((i) => {
-                return <SelectItem value={i.value}>{i.placeholder}</SelectItem>;
+                return <SelectItem value={i.value}>{i.name}</SelectItem>;
               })}
             </Select.Group>
           </Select.Viewport>
@@ -146,4 +105,4 @@ const SelectItem = React.forwardRef(
   }
 );
 
-export default HPaddingSelect;
+export default FontSelect;

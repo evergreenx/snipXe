@@ -44,9 +44,9 @@ export default function ThemeControl() {
   
 
   return (
-    <div className="border-b border-t border-[#7789A9]">
+    <div className="border-b-[0.5px] border-t-[0.5px]  border-[#414D77]">
       <div className="p-[28px]">
-        <h2 className="text-lg  text-secondary font-medium">Choose Theme</h2>
+        <h2 className="text-base  text-secondary font-medium">Choose Theme</h2>
 
         <ThemeSelect data={themes} />
       </div>

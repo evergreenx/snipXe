@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&family=Roboto&display=swap');
 @layer base {
   :root {
     --background: 200 20% 98%;
@@ -25,6 +23,9 @@
 @layer base {
   * {
     @apply border-foreground/20;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 }
 
@@ -44,7 +45,66 @@
 }
 
 body {
-
-  font-family: 'Nunito', sans-serif;
+  font-family: "Raleway", sans-serif;
   overflow: hidden;
+}
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+
+.cm-editor {
+  border: 0;
+  position: absolute;
+  border-radius: 8px;
+  height: 100%;
+  line-height: 133%;
+  overflow: hidden;
+}
+.cm-editor.cm-focused {
+  border: none !important;
+  outline: none;
+
+}
+
+.cm-editor .cm-gutters {
+  display: none
+}
+
+.cm-editor .cm-scroller {
+  padding-top: 1rem;
+  display: none;
+  overflow: hidden!important;
+}
+
+.cm-editor .cm-activeLine {
+  background: none
+}
+.cm-editor .cm-ySelectionCaretDot {
+  display: none
+}
+
+.cm-editor .cm-ySelectionInfo {
+  position: absolute;
+  top: -1.6em;
+  left: -1px;
+  padding: 2px 6px;
+  opacity: 1;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  border-bottom-left-radius: 0;
+  line-height: normal;
+  white-space: nowrap;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  z-index: 1000
 }

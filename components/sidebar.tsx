@@ -74,7 +74,7 @@ px-[24px] py-[16px] text-primary"
               href={link.link}
               className="text-white font-semibold
               space-x-[4px] items-center
-          flex py-[16px] px-[80px] capitalize mb-[20px]
+          flex py-[16px] px-[80px] capitalize mb-[20px] text-lg
           "
             >
               <Image src={link.icon} alt={link.name} />

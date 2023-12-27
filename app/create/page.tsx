@@ -12,6 +12,8 @@ import { dracula } from "@uiw/codemirror-theme-dracula";
 import { darcula } from "@uiw/codemirror-theme-darcula";
 import { abyss } from "@uiw/codemirror-theme-abyss";
 
+import { UnControlled as CodeMirrorx } from "react-codemirror2";
+
 // import "prismjs/themes/prism-dark.css";
 // import "../../style/dracula.css";
 import { useSelector } from "react-redux";
@@ -22,6 +24,18 @@ export default function page() {
   const selectedTheme = useSelector((state: RootState) => state.control.theme);
   const matches = useMediaQuery("(min-width: 768px)");
   console.log(languageMode);
+
+  const codeMirrorRef = useRef();
+
+  //   useEffect(() => {
+  //     require('codemirror/mode/markdown/markdown')
+  //     const CodeMirror = require('codemirror')
+  //     const instance = CodeMirror.fromTextArea(codeMirrorRef.current, {
+  //         lineNumbers: false,
+  //         lineWrapping: true,
+  //         mode: "text/x-markdown"
+  //     })
+  // }, [])
 
   const [value, setValue] = React.useState(
     "const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)const unfold = (f, seed) => {const go = (f, seed, acc) => {const res = f(seed)return res ? go(f, res[1], acc.concat([res[0]])) : acc}"
@@ -100,9 +114,9 @@ export default function page() {
       foldGutter: false,
     },
     value: code,
-    width: matches ? "auto" : "300px",
+    width: "auto",
 
-    height: matches ? "auto" : "auto",
+    height: "auto",
     theme: theme,
   });
 
@@ -118,7 +132,7 @@ export default function page() {
 
   return (
     <>
-      <div className="mt-[200px]  mx-auto flex  w-full m-[10px] lg:ml-[400px]  ">
+      <div className="mt-[200px]  mx-auto flex  w-full m-[10px] lg:ml-[400px] p-3 ">
         <div className="">
           <div className="content text-center">
             <h2 className="font-bold text-[36px] text-primary">
@@ -134,11 +148,40 @@ export default function page() {
             style={{
               backgroundColor: BG?.hex,
               padding: `${Padding.v}px ${Padding.h}px`,
+
+              minHeight: "90px",
             }}
-            className={` lg:w-[800px] w-full flex justify-center items-center `}
+            className={`  rounded-md max-w-[100%] mx-auto my-0   w-[700px]`}
           >
             {/* code mirror */}
-            <div ref={editor} />
+            <div className="relative mx-auto max-w-[100%] ">
+              <div
+                style={{
+                  // fontSize: "16px",
+                  borderRadius: "20px",
+                  display: "block",
+                  fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+                }}
+                ref={editor}
+              />
+            </div>
+
+            {/* <CodeMirrorx
+  value='<h1>I ♥ react-codemirror2</h1>'
+  
+  options={{
+    mode: 'xml',
+    theme: 'material',
+    lineNumbers: true,
+    visualViewport : 'infinity'
+  }}
+  onChange={(editor, data, value) => {
+  }}
+/> */}
+
+            {/* <section>
+        <textarea ref={codeMirrorRef}></textarea>
+    </section> */}
           </div>
         </div>
       </div>

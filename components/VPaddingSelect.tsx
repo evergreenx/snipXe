@@ -18,19 +18,37 @@ const VPaddingSelect = () => {
       value: "1",
       placeholder: 1,
     },
-
-    {
-      value: "5",
-      placeholder: 5,
-    },
-
-    {
-      value: "10",
-      placeholder: 10,
-    },
     {
       value: "15",
       placeholder: 15,
+    },
+    {
+      value: "20",
+      placeholder: 20,
+    },
+
+    {
+      value: "25",
+      placeholder: 25,
+    },
+    {
+      value: "30",
+      placeholder: 30,
+    },
+    {
+      value: "35",
+      placeholder: 35,
+    },   {
+      value: "40",
+      placeholder: 40,
+    },
+    {
+      value: "45",
+      placeholder: 45,
+    },
+    {
+      value: "50",
+      placeholder: 55,
     },
   ];
 

@@ -7,6 +7,8 @@ import BGControl from "./control/BGControl";
 import ThemeControl from "./control/ThemeControl";
 import LanguageControl from "./control/LanguageControl";
 import PaddingControl from "./control/PaddingControl";
+import FontSelect from "./FontSelect";
+import FontControl from "./control/FontControl";
 
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(false);
@@ -22,10 +24,10 @@ function CanvasControl() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`w-[323px] pt-[24px] absolute lg:relative  right-0  mt-[120px] pb-[105px] scroll-x overflow-y-scroll bg-primary h-full text-white `}
+            className={`w-[323px]  absolute lg:fixed lg:top-[121px] top-0 pb-[100px]   right-0  overflow-y-scroll bg-primary h-screen text-white `}
           >
             <div
-              className="toogle w-[10px] cursor-pointer px-[28px]"
+              className="toogle w-[10px] cursor-pointer mt-[24px] px-[28px]"
               onClick={() => {
                 setValue((x) => !x);
               }}
@@ -54,7 +56,7 @@ function CanvasControl() {
                     type="text"
                     placeholder="snipx name"
                     defaultValue={"UNTITLED SNIPX"}
-                    className=" text-[#DDE1E1] w-[80%]   border-b font-semibold text-lg bg-transparent outline-none border-b-white"
+                    className=" text-[#DDE1E1] w-[80%]   border-b font-semibold text-base bg-transparent outline-none border-b-white"
                   />
 
                   <svg
@@ -83,6 +85,8 @@ function CanvasControl() {
               <LanguageControl />
 
               <PaddingControl />
+
+              <FontControl />
      
 
             </div>
