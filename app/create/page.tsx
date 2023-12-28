@@ -71,7 +71,16 @@ export default function page() {
     "const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)const unfold = (f, seed) => {const go = (f, seed, acc) => {const res = f(seed)return res ? go(f, res[1], acc.concat([res[0]])) : acc}"
   );
 
-  console.log(firasans , rubik , raleway ,nunito , roboto , raleway , poppins , ubuntu)
+  console.log(
+    firasans,
+    rubik,
+    raleway,
+    nunito,
+    roboto,
+    raleway,
+    poppins,
+    ubuntu
+  );
 
   let extensions;
 
@@ -156,10 +165,12 @@ export default function page() {
     if (editor.current) {
       setContainer(editor.current);
     }
-  }, [editor.current, languageMode, selectedTheme,selectedFont]);
+  }, [editor.current, languageMode, selectedTheme, selectedFont]);
 
   useEffect(() => {
-    const scrollerElement = document.querySelector<HTMLElement>(".cm-editor .cm-scroller");
+    const scrollerElement = document.querySelector<HTMLElement>(
+      ".cm-editor .cm-scroller"
+    );
 
     console.log(scrollerElement, "dd");
 
@@ -168,7 +179,7 @@ export default function page() {
     }
   }, [editor.current, selectedFont]);
 
-  console.log(selectedFont)
+  console.log(selectedFont);
   const preRef = useRef(null);
 
   const BG = useSelector((state: RootState) => state.control.bg);
@@ -194,13 +205,44 @@ export default function page() {
 
               minHeight: "90px",
             }}
-            className={`  rounded-md max-w-[100%] mx-auto my-0   w-[700px]`}
+            className={`  rounded-md max-w-[100%] mx-auto my-0 w-[400px]   lg:w-[700px]`}
           >
             {/* code mirror */}
             <div className="relative mx-auto max-w-[100%] ">
-
               <div className="os absolute top-4 z-50 ml-[14px]">
-              <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="54"
+                  height="14"
+                  viewBox="0 0 54 14"
+                >
+                  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <circle
+                      cx="6"
+                      cy="6"
+                      r="6"
+                      fill="#FF5F56"
+                      stroke="#E0443E"
+                      stroke-width=".5"
+                    ></circle>
+                    <circle
+                      cx="26"
+                      cy="6"
+                      r="6"
+                      fill="#FFBD2E"
+                      stroke="#DEA123"
+                      stroke-width=".5"
+                    ></circle>
+                    <circle
+                      cx="46"
+                      cy="6"
+                      r="6"
+                      fill="#27C93F"
+                      stroke="#1AAB29"
+                      stroke-width=".5"
+                    ></circle>
+                  </g>
+                </svg>
               </div>
               <div
                 className="f"
