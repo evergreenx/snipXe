@@ -14,7 +14,7 @@ export default function FontControl() {
     },
     {
       name: "Raleway",
-      value: "'__Raleway_c3f4a3'",
+      value: "'__Raleway_Fallback_c3f4a3'",
     },
     {
       name: "Roboto",
@@ -23,7 +23,7 @@ export default function FontControl() {
 
     {
       name: "Rubik",
-      value: "'__Rubik_a7fb71'",
+      value: "'__Rubik_Fallback_a7fb71'",
     },
     {
       name: "Poppins",
