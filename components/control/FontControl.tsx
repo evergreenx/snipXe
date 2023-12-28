@@ -3,29 +3,41 @@ import ThemeSelect from "../ThemeSelect";
 import FontSelect from "../FontSelect";
 
 export default function FontControl() {
-    const fonts = [
-        {
-          name: 'Arial',
-          value: 'Arial, sans-serif',
-        },
-        {
-          name: 'Times New Roman',
-          value: 'Times New Roman, serif',
-        },
-        {
-          name: 'Verdana',
-          value: 'Verdana, sans-serif',
-        },
-        {
-          name: 'Courier New',
-          value: 'Courier New, monospace',
-        },
-        {
-          name: 'Roboto',
-          value: 'Roboto, sans-serif',
-        },
-      ];
-  
+  const fonts = [
+    {
+      name: "Fira Sans",
+      value: "'__Fira_Sans_22278b'",
+    },
+    {
+      name: "Nunito",
+      value: "'__Nunito_1c0e92'",
+    },
+    {
+      name: "Raleway",
+      value: "'__Raleway_c3f4a3'",
+    },
+    {
+      name: "Roboto",
+      value: "'__Roboto_a789c4'",
+    },
+
+    {
+      name: "Rubik",
+      value: "'__Rubik_a7fb71'",
+    },
+    {
+      name: "Poppins",
+      value: "'__Poppins_8c1529'",
+    },
+    {
+      name: "Source Code Pro",
+      value: "'__Source_Code_Pro_388350'",
+    },
+    {
+      name: "Ubuntu",
+      value: "'__Ubuntu_5449ac'",
+    },
+  ];
 
   return (
     <div className="border-b-[0.5px] border-t-[0.5px]  border-[#414D77]">

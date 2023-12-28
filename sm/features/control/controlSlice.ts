@@ -31,7 +31,7 @@ const initialState: controlSliceState = {
     v: "15",
     h: "15",
   },
-  font: 'Roboto, sans-serif'
+  font: ''
 };
 
 export const controlSlice = createSlice({

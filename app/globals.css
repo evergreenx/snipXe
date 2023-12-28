@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&family=Roboto&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Nunito&family=Poppins&family=Raleway&family=Roboto&family=Source+Code+Pro&family=Ubuntu&display=swap");
 @layer base {
   :root {
     --background: 200 20% 98%;
@@ -55,41 +56,44 @@ html {
 }
 
 .ͼ1 .cm-scroller {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+
+  font-size: 12px;
+  line-height: 150%;
+  width: auto;
+  height: auto;
 }
 .cm-editor {
   border: 0;
-
   border-radius: 8px;
   height: 100%;
   line-height: 133%;
   overflow: hidden;
   padding: 18px 18px;
-    padding-left: 12px;
-    height: auto;
-    min-width: inherit;
+  padding-left: 12px;
+  height: auto;
+  min-width: inherit;
 }
 .cm-editor.cm-focused {
   border: none !important;
   outline: none;
-
 }
 
 .cm-editor .cm-gutters {
-  display: none
+  display: none;
 }
 
 .cm-editor .cm-scroller {
   padding-top: 1rem;
   display: none;
-  overflow: hidden!important;
+  overflow: hidden !important;
 }
 
 .cm-editor .cm-activeLine {
-  background: none
+  background: none;
 }
 .cm-editor .cm-ySelectionCaretDot {
-  display: none
+  display: none;
 }
 
 .cm-editor .cm-ySelectionInfo {
@@ -112,5 +116,5 @@ html {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  z-index: 1000
+  z-index: 1000;
 }

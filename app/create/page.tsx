@@ -11,6 +11,16 @@ import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import { darcula } from "@uiw/codemirror-theme-darcula";
 import { abyss } from "@uiw/codemirror-theme-abyss";
+import {
+  Source_Code_Pro,
+  Ubuntu,
+  Poppins,
+  Fira_Sans,
+  Rubik,
+  Nunito,
+  Roboto,
+  Raleway,
+} from "next/font/google";
 
 import { UnControlled as CodeMirrorx } from "react-codemirror2";
 
@@ -19,11 +29,31 @@ import { UnControlled as CodeMirrorx } from "react-codemirror2";
 import { useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 
+const sourcePro = Source_Code_Pro({ subsets: ["latin"], display: "swap" });
+
+const ubuntu = Ubuntu({ subsets: ["latin"], display: "swap", weight: "400" });
+
+const raleway = Raleway({ subsets: ["latin"], display: "swap", weight: "400" });
+
+const roboto = Roboto({ subsets: ["latin"], display: "swap", weight: "400" });
+
+const poppins = Poppins({ subsets: ["latin"], display: "swap", weight: "400" });
+
+const firasans = Fira_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+const rubik = Rubik({ subsets: ["latin"], display: "swap", weight: "400" });
+const nunito = Nunito({ subsets: ["latin"], display: "swap", weight: "400" });
+
 export default function page() {
   const languageMode = useSelector((state: RootState) => state.control.mode);
   const selectedTheme = useSelector((state: RootState) => state.control.theme);
+
+  const selectedFont = useSelector((state: RootState) => state.control.font);
+
   const matches = useMediaQuery("(min-width: 768px)");
-  console.log(languageMode);
 
   const codeMirrorRef = useRef();
 
@@ -40,6 +70,8 @@ export default function page() {
   const [value, setValue] = React.useState(
     "const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)const unfold = (f, seed) => {const go = (f, seed, acc) => {const res = f(seed)return res ? go(f, res[1], acc.concat([res[0]])) : acc}"
   );
+
+  console.log(firasans)
 
   let extensions;
 
@@ -124,8 +156,19 @@ export default function page() {
     if (editor.current) {
       setContainer(editor.current);
     }
-  }, [editor.current, languageMode, selectedTheme]);
+  }, [editor.current, languageMode, selectedTheme,selectedFont]);
 
+  useEffect(() => {
+    const scrollerElement = document.querySelector(".cm-editor .cm-scroller");
+
+    console.log(scrollerElement, "dd");
+
+    if (scrollerElement) {
+      scrollerElement.style.fontFamily = `${selectedFont}`; // Update the font family
+    }
+  }, [editor.current, selectedFont]);
+
+  console.log(selectedFont)
   const preRef = useRef(null);
 
   const BG = useSelector((state: RootState) => state.control.bg);
@@ -156,11 +199,11 @@ export default function page() {
             {/* code mirror */}
             <div className="relative mx-auto max-w-[100%] ">
               <div
+                className="f"
                 style={{
                   // fontSize: "16px",
                   borderRadius: "20px",
                   display: "block",
-                  fontFamily: "",
                 }}
                 ref={editor}
               />
