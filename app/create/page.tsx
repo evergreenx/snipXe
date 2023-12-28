@@ -71,7 +71,7 @@ export default function page() {
     "const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)const unfold = (f, seed) => {const go = (f, seed, acc) => {const res = f(seed)return res ? go(f, res[1], acc.concat([res[0]])) : acc}"
   );
 
-  console.log(firasans , rubik , raleway)
+  console.log(firasans , rubik , raleway ,nunito , roboto , raleway , poppins , ubuntu)
 
   let extensions;
 

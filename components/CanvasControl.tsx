@@ -24,7 +24,7 @@ function CanvasControl() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`w-[323px]  absolute lg:fixed lg:top-[121px] top-0 pb-[100px]   right-0  overflow-y-scroll bg-primary h-screen text-white `}
+            className={`w-[323px]  fixed lg:fixed lg:top-[121px] top-[121px] pb-[100px]   right-0  overflow-y-scroll bg-primary h-screen text-white `}
           >
             <div
               className="toogle w-[10px] cursor-pointer mt-[24px] px-[28px]"
