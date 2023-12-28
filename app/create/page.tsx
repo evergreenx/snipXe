@@ -186,14 +186,14 @@ export default function page() {
 
   return (
     <>
-      <div className="mt-[200px]  mx-auto flex  w-full m-[10px] lg:ml-[400px] p-3 ">
+      <div className="mt-[200px]  mx-auto lg:flex  w-full m-[10px] lg:ml-[400px] p-3 ">
         <div className="">
           <div className="content text-center">
-            <h2 className="font-bold text-[36px] text-primary">
+            <h2 className="font-bold text-xl lg:text-[36px] my-[40px] text-primary">
               🌈 Let’s create Magic! ✨
             </h2>
 
-            <p className="font-medium text-lg my-[13px] text-primary">
+            <p className="font-medium text-sm lg:text-lg my-[13px] text-primary">
               Edit the frame below to create your magical Snipx
             </p>
           </div>
