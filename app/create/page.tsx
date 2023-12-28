@@ -1,7 +1,7 @@
 "use client";
 
 import Sidebar from "@/components/sidebar";
-import React, { Ref, useEffect, useRef } from "react";
+import React, { ReactHTMLElement, Ref, useEffect, useRef } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
@@ -159,7 +159,7 @@ export default function page() {
   }, [editor.current, languageMode, selectedTheme,selectedFont]);
 
   useEffect(() => {
-    const scrollerElement = document.querySelector(".cm-editor .cm-scroller");
+    const scrollerElement = document.querySelector<HTMLElement>(".cm-editor .cm-scroller");
 
     console.log(scrollerElement, "dd");
 
