@@ -11,6 +11,7 @@ import { python } from "@codemirror/lang-python";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import { darcula } from "@uiw/codemirror-theme-darcula";
 import { abyss } from "@uiw/codemirror-theme-abyss";
+import { EditorView } from "@codemirror/view";
 import {
   Source_Code_Pro,
   Ubuntu,
@@ -99,7 +100,7 @@ export default function page() {
 
   switch (languageMode) {
     case "javascript":
-      extensions = [javascript()];
+      extensions = [javascript() , EditorView.lineWrapping ];
 
       break;
     case "python":
@@ -147,12 +148,14 @@ export default function page() {
   const { setContainer, state, setView } = useCodeMirror({
     container: editor.current,
     extensions,
+    
 
     basicSetup: {
       lineNumbers: false,
       highlightActiveLine: false,
       highlightActiveLineGutter: false,
       foldGutter: false,
+    
     },
     value: code,
     width: "auto",
@@ -205,7 +208,7 @@ export default function page() {
 
               minHeight: "90px",
             }}
-            className={`  rounded-md max-w-[100%] mx-auto my-0 w-[400px]   lg:w-[700px]`}
+            className={`  rounded-md max-w-[100%] mx-auto my-0 w-full   lg:w-[700px]`}
           >
             {/* code mirror */}
             <div className="relative mx-auto max-w-[100%] ">

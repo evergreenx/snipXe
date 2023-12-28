@@ -56,12 +56,10 @@ html {
 }
 
 .ͼ1 .cm-scroller {
-  /* font-family: "Roboto", sans-serif; */
-
   font-size: 12px;
   line-height: 150%;
-  width: auto;
-  height: auto;
+
+
 }
 .cm-editor {
   border: 0;
@@ -72,7 +70,7 @@ html {
   padding: 18px 18px;
   padding-left: 12px;
   height: auto;
-  min-width: inherit;
+  min-width: auto;
 }
 .cm-editor.cm-focused {
   border: none !important;
