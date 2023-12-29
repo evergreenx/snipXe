@@ -25,7 +25,7 @@ const ThemeSelect = ({ data }: { data: any[] }) => {
       defaultValue={selectedTheme}
     >
       <Select.Trigger
-        className="inline-flex mt-[20px] items-center justify-between rounded py-[8px] px-[16px] text-base font-semibold leading-none h-[35px] gap-[5px] bg-transparent text-secondary border-[0.5px] border-[#DDE1E1] w-full outline-none"
+        className="inline-flex z-[100] mt-[20px] items-center justify-between rounded py-[8px] px-[16px] text-base font-semibold leading-none h-[35px] gap-[5px] bg-transparent text-secondary border-[0.5px] border-[#DDE1E1] w-full outline-none"
         aria-label="theme"
       >
         <Select.Value placeholder="Select theme" />
@@ -48,7 +48,7 @@ const ThemeSelect = ({ data }: { data: any[] }) => {
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
-        <Select.Content className="overflow-hidden bg-white rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
+        <Select.Content className="overflow-hidden z-[100] bg-white rounded-md shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
           <Select.ScrollUpButton className="flex items-center justify-center h-[25px] bg-white text-black cursor-default">
             <ChevronUpIcon />
           </Select.ScrollUpButton>

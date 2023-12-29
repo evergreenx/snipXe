@@ -9,17 +9,29 @@ import LanguageControl from "./control/LanguageControl";
 import PaddingControl from "./control/PaddingControl";
 import FontSelect from "./FontSelect";
 import FontControl from "./control/FontControl";
+import { useRef } from 'react'
 
+import { useOnClickOutside } from 'usehooks-ts'
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(false);
+  const ref = useRef(null)
+
+
+  const handleClickOutside = () => {
+    // Your custom logic here
+   setValue(false)
+  }
 
   const matches = useMediaQuery('(min-width: 768px)')
 
+  useOnClickOutside(ref, handleClickOutside)
   return (
     <div className="">
       <AnimatePresence>
         {value && (
           <motion.aside
+          ref={ref}
+  
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
