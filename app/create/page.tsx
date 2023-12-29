@@ -23,8 +23,11 @@ import {
   Raleway,
 } from "next/font/google";
 
-import { useSelector } from "react-redux";
+import html2canvas from "html2canvas";
+
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
+import { handleSetRef } from "@/sm/features/control/downloadSlice";
 
 const sourcePro = Source_Code_Pro({ subsets: ["latin"], display: "swap" });
 
@@ -57,7 +60,7 @@ export default function page() {
 
   const FontSizeTheme = EditorView.theme({
     "&": {
-      fontSize: "10.5px",
+      fontSize: "13.5px",
     },
     ".cm-content": {},
     ".cm-gutters": {
@@ -175,22 +178,32 @@ export default function page() {
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
+  const codeRef = useRef(null);
+
+  const downloadCodeAsImage = () => {
+    if (codeRef.current) {
+      html2canvas(codeRef.current).then((canvas) => {
+        const link = document.createElement("a");
+        document.body.appendChild(link);
+        link.download = "code.png"; // Set the filename here
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        document.body.removeChild(link);
+      });
+    }
+  };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(handleSetRef(codeRef));
+  }, []);
+
   return (
     <>
-      <div
-        style={{
-          fontFamily: "",
-        }}
-        className="mt-[200px]  mx-auto lg:flex  w-full m-[10px] lg:ml-[400px] p-3 "
-      >
+      <div className="mt-[200px]  mx-auto lg:flex w-full m-[10px] lg:ml-[400px] p-3 ">
         <div className="">
           <div className="content text-center">
-            <h2
-              style={{
-                fontFamily: firasans.style.fontFamily,
-              }}
-              className="font-bold text-xl lg:text-[36px] my-[40px] text-primary"
-            >
+            <h2 className="font-bold text-xl lg:text-[36px] my-[40px] text-primary">
               🌈 Let’s create Magic! ✨
             </h2>
 
@@ -200,6 +213,7 @@ export default function page() {
           </div>
 
           <div
+            ref={codeRef}
             style={{
               backgroundColor: BG?.hex,
               padding: `${Padding.v}px ${Padding.h}px`,

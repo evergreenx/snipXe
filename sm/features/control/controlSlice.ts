@@ -88,7 +88,7 @@ export const {
   handleHPaddingUpdate,
   handleFontUpdate,
   handleLineHeightUpdate,
-  handleOSUpdate
+  handleOSUpdate,
 } = controlSlice.actions;
 
 export default controlSlice.reducer;
