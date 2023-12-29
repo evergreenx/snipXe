@@ -3,7 +3,7 @@ export default function Header() {
     <div
       className="flex 
     
-    h-[120px] w-full fixed z-30
+    lg:h-[120px] w-full fixed z-30 h-[90px]
    flex-col gap-16 justify-end items-end bg-white shadow-xl"
     >
       items goes here
