@@ -1,17 +1,20 @@
 import React from "react";
 import ThemeSelect from "../ThemeSelect";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/sm/store";
+import { handleOSUpdate } from "@/sm/features/control/controlSlice";
 
 export default function ThemeControl() {
   const themes = [
-    { name: 'Abyss', value: 'abyss' },
+    { name: "Abyss", value: "abyss" },
     // { name: 'Atom Dark', value: 'prism-atom-dark' },
     // { name: 'Base16 Ateliersulphurpool Light', value: 'prism-base16-ateliersulphurpool.light' },
     // { name: 'CB', value: 'prism-cb' },
     // { name: 'Coldark Cold', value: 'prism-coldark-cold' },
     // { name: 'Coldark Dark', value: 'prism-coldark-dark' },
     // { name: 'Coy Without Shadows', value: 'prism-coy-without-shadows' },
-    { name: 'Darcula', value: 'darcula' },
-    { name: 'Dracula', value: 'dracula' },
+    { name: "Darcula", value: "darcula" },
+    { name: "Dracula", value: "dracula" },
     // { name: 'Duotone Dark', value: 'prism-duotone-dark' },
     // { name: 'Duotone Earth', value: 'prism-duotone-earth' },
     // { name: 'Duotone Forest', value: 'prism-duotone-forest' },
@@ -41,14 +44,115 @@ export default function ThemeControl() {
     // { name: 'Xonokai', value: 'prism-xonokai' },
     // { name: 'Z Touch', value: 'prism-z-touch' },
   ];
-  
+
+  const os = useSelector((state: RootState) => state.control.os);
+  const dispatch = useDispatch();
+
+  const handleChangeOS = (os: "m" | "w") => {
+    dispatch(handleOSUpdate(os));
+  };
 
   return (
     <div className="border-b-[0.5px] border-t-[0.5px]  border-[#414D77]">
       <div className="p-[28px]">
-        <h2 className="text-base  text-secondary font-medium">Choose Theme</h2>
+        <h2 className="text-base  text-secondary font-semibold">
+          Choose Theme
+        </h2>
 
         <ThemeSelect data={themes} />
+
+        <div className="os flex space-x-6 items-center mt-[20px] ">
+          <p className="text-sm">OS</p>
+
+          <div className="flex space-x-5 p-2">
+            <div
+              onClick={() => handleChangeOS("m")}
+              className={`p-2 rounded cursor-pointer 
+            
+            
+            ${os === "m" && "border-[0.5px] border-[#DDE1E1] "}
+            
+            `}
+            >
+              <svg
+                className="  "
+                width="38"
+                height="14"
+                viewBox="0 0 58 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 7H11"
+                  stroke="#878787"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M35 1H25C24.4477 1 24 1.44772 24 2V12C24 12.5523 24.4477 13 25 13H35C35.5523 13 36 12.5523 36 12V2C36 1.44772 35.5523 1 35 1Z"
+                  stroke="#878787"
+                ></path>
+                <path
+                  d="M47 2L57 12"
+                  stroke="#878787"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M47 12L57 2"
+                  stroke="#878787"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+
+            <div
+              onClick={() => handleChangeOS("w")}
+              className={`p-2 rounded cursor-pointer 
+            
+            
+            ${os === "w" && "border-[0.5px] border-[#DDE1E1] "}
+            
+            `}
+            >
+              <svg
+                className="cursor-pointer "
+                xmlns="http://www.w3.org/2000/svg"
+                width="38"
+                height="14"
+                viewBox="0 0 54 14"
+              >
+                <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                  <circle
+                    cx="6"
+                    cy="6"
+                    r="6"
+                    fill="#FF5F56"
+                    stroke="#E0443E"
+                    stroke-width=".5"
+                  ></circle>
+                  <circle
+                    cx="26"
+                    cy="6"
+                    r="6"
+                    fill="#FFBD2E"
+                    stroke="#DEA123"
+                    stroke-width=".5"
+                  ></circle>
+                  <circle
+                    cx="46"
+                    cy="6"
+                    r="6"
+                    fill="#27C93F"
+                    stroke="#1AAB29"
+                    stroke-width=".5"
+                  ></circle>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Color, ColorResult, SketchPickerProps } from "react-color";
 
+interface OsInterface {
+  os: "w" | "m";
+}
 export interface controlSliceState {
   value: number;
   name: string;
@@ -12,8 +15,9 @@ export interface controlSliceState {
     v: string;
     h: string;
   };
-  font: string,
-  lineH: string
+  font: string;
+  lineH: string;
+  os: "w" | "m";
 }
 
 const defaultColorResult: ColorResult = {
@@ -32,8 +36,9 @@ const initialState: controlSliceState = {
     v: "15",
     h: "15",
   },
-  font: '',
-  lineH: '150%'
+  font: "",
+  lineH: "150%",
+  os: "w",
 };
 
 export const controlSlice = createSlice({
@@ -68,6 +73,9 @@ export const controlSlice = createSlice({
     handleLineHeightUpdate: (state, action: PayloadAction<string>) => {
       state.lineH = action.payload;
     },
+    handleOSUpdate: (state, action: PayloadAction<"w" | "m">) => {
+      state.os = action.payload;
+    },
   },
 });
 
@@ -79,7 +87,8 @@ export const {
   handleVPaddingUpdate,
   handleHPaddingUpdate,
   handleFontUpdate,
-  handleLineHeightUpdate
+  handleLineHeightUpdate,
+  handleOSUpdate
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

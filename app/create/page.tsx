@@ -47,6 +47,8 @@ const nunito = Nunito({ subsets: ["latin"], display: "swap", weight: "400" });
 export default function page() {
   const languageMode = useSelector((state: RootState) => state.control.mode);
   const selectedTheme = useSelector((state: RootState) => state.control.theme);
+  const os = useSelector((state: RootState) => state.control.os);
+
   const selectedLineHeight = useSelector(
     (state: RootState) => state.control.lineH
   );
@@ -104,7 +106,7 @@ export default function page() {
   }
 
   let theme = undefined;
-  console.log(ubuntu.style.fontFamily , roboto.style.fontFamily , raleway, rubik , poppins , sourcePro, nunito);
+
   switch (selectedTheme) {
     case "dracula":
       theme = dracula;
@@ -208,40 +210,81 @@ export default function page() {
           >
             {/* code mirror */}
             <div className="relative mx-auto max-w-[100%] ">
-              <div className="os absolute top-4 z-50 ml-[14px]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="54"
-                  height="14"
-                  viewBox="0 0 54 14"
-                >
-                  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-                    <circle
-                      cx="6"
-                      cy="6"
-                      r="6"
-                      fill="#FF5F56"
-                      stroke="#E0443E"
-                      stroke-width=".5"
-                    ></circle>
-                    <circle
-                      cx="26"
-                      cy="6"
-                      r="6"
-                      fill="#FFBD2E"
-                      stroke="#DEA123"
-                      stroke-width=".5"
-                    ></circle>
-                    <circle
-                      cx="46"
-                      cy="6"
-                      r="6"
-                      fill="#27C93F"
-                      stroke="#1AAB29"
-                      stroke-width=".5"
-                    ></circle>
-                  </g>
-                </svg>
+              <div className="os    z-50 ml-[14px]">
+                {os === "m" ? (
+                  <div className="os absolute top-4  right-4 z-50 ml-[14px]">
+                    <svg
+                      width="58"
+                      height="14"
+                      viewBox="0 0 58 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 7H11"
+                        stroke="#878787"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M35 1H25C24.4477 1 24 1.44772 24 2V12C24 12.5523 24.4477 13 25 13H35C35.5523 13 36 12.5523 36 12V2C36 1.44772 35.5523 1 35 1Z"
+                        stroke="#878787"
+                      ></path>
+                      <path
+                        d="M47 2L57 12"
+                        stroke="#878787"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M47 12L57 2"
+                        stroke="#878787"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="os absolute top-4  z-50  ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="54"
+                      height="14"
+                      viewBox="0 0 54 14"
+                    >
+                      <g
+                        fill="none"
+                        fill-rule="evenodd"
+                        transform="translate(1 1)"
+                      >
+                        <circle
+                          cx="6"
+                          cy="6"
+                          r="6"
+                          fill="#FF5F56"
+                          stroke="#E0443E"
+                          stroke-width=".5"
+                        ></circle>
+                        <circle
+                          cx="26"
+                          cy="6"
+                          r="6"
+                          fill="#FFBD2E"
+                          stroke="#DEA123"
+                          stroke-width=".5"
+                        ></circle>
+                        <circle
+                          cx="46"
+                          cy="6"
+                          r="6"
+                          fill="#27C93F"
+                          stroke="#1AAB29"
+                          stroke-width=".5"
+                        ></circle>
+                      </g>
+                    </svg>
+                  </div>
+                )}
               </div>
               <div
                 className="f"

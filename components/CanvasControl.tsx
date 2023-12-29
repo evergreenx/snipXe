@@ -26,11 +26,13 @@ function CanvasControl() {
 
   useOnClickOutside(ref, handleClickOutside)
   return (
-    <div className="">
+    <div 
+    ref={ref}
+    className="">
       <AnimatePresence>
         {value && (
           <motion.aside
-          ref={ref}
+     
   
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
