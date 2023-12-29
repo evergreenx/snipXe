@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Nunito&family=Poppins&family=Raleway&family=Roboto&family=Source+Code+Pro&family=Ubuntu&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lora&family=Nunito&family=Poppins&family=Raleway&family=Roboto&family=Source+Code+Pro&family=Ubuntu&display=swap');
+
 @layer base {
   :root {
     --background: 200 20% 98%;
@@ -32,6 +33,7 @@
 
 .animate-in {
   animation: animateIn 0.3s ease 0.15s both;
+
 }
 
 @keyframes animateIn {
@@ -107,7 +109,7 @@ html {
   line-height: normal;
   white-space: nowrap;
   font-size: 14px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   font-style: normal;
   font-weight: 600;
   pointer-events: none;

@@ -57,21 +57,18 @@ export default function page() {
     "&": {
       fontSize: "10.5px",
     },
-    ".cm-content": {
-      fontFamily: selectedFont,
-      // minHeight: "200px",
-    },
+    ".cm-content": {},
     ".cm-gutters": {
       // minHeight: "200px",
     },
     ".cm-scroller": {
       overflow: "auto",
-      // maxHeight: "600px",
+      maxHeight: "600px",
+      fontFamily: selectedFont,
+
       lineHeight: selectedLineHeight,
     },
   });
-
-
 
   let extensions = [];
 
@@ -107,7 +104,7 @@ export default function page() {
   }
 
   let theme = undefined;
-  console.log(theme);
+  console.log(ubuntu.style.fontFamily , roboto.style.fontFamily , raleway, rubik , poppins , sourcePro, nunito);
   switch (selectedTheme) {
     case "dracula":
       theme = dracula;
@@ -178,10 +175,20 @@ export default function page() {
 
   return (
     <>
-      <div className="mt-[200px]  mx-auto lg:flex  w-full m-[10px] lg:ml-[400px] p-3 ">
+      <div
+        style={{
+          fontFamily: "",
+        }}
+        className="mt-[200px]  mx-auto lg:flex  w-full m-[10px] lg:ml-[400px] p-3 "
+      >
         <div className="">
           <div className="content text-center">
-            <h2 className="font-bold text-xl lg:text-[36px] my-[40px] text-primary">
+            <h2
+              style={{
+                fontFamily: firasans.style.fontFamily,
+              }}
+              className="font-bold text-xl lg:text-[36px] my-[40px] text-primary"
+            >
               🌈 Let’s create Magic! ✨
             </h2>
 
