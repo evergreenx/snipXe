@@ -14,6 +14,7 @@ export default function Header() {
     if (coderefstate?.current) {
       html2canvas(coderefstate.current, {
         backgroundColor: null,
+        imageTimeout: 15000,
       }).then((canvas) => {
         const link = document.createElement("a");
         document.body.appendChild(link);
