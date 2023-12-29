@@ -23,10 +23,6 @@ import {
   Raleway,
 } from "next/font/google";
 
-import { UnControlled as CodeMirrorx } from "react-codemirror2";
-
-// import "prismjs/themes/prism-dark.css";
-// import "../../style/dracula.css";
 import { useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 
@@ -51,39 +47,33 @@ const nunito = Nunito({ subsets: ["latin"], display: "swap", weight: "400" });
 export default function page() {
   const languageMode = useSelector((state: RootState) => state.control.mode);
   const selectedTheme = useSelector((state: RootState) => state.control.theme);
+  const selectedLineHeight = useSelector(
+    (state: RootState) => state.control.lineH
+  );
 
   const selectedFont = useSelector((state: RootState) => state.control.font);
 
-  const matches = useMediaQuery("(min-width: 768px)");
+  const FontSizeTheme = EditorView.theme({
+    "&": {
+      fontSize: "10.5px",
+    },
+    ".cm-content": {
+      fontFamily: selectedFont,
+      // minHeight: "200px",
+    },
+    ".cm-gutters": {
+      // minHeight: "200px",
+    },
+    ".cm-scroller": {
+      overflow: "auto",
+      // maxHeight: "600px",
+      lineHeight: selectedLineHeight,
+    },
+  });
 
-  const codeMirrorRef = useRef();
 
-  //   useEffect(() => {
-  //     require('codemirror/mode/markdown/markdown')
-  //     const CodeMirror = require('codemirror')
-  //     const instance = CodeMirror.fromTextArea(codeMirrorRef.current, {
-  //         lineNumbers: false,
-  //         lineWrapping: true,
-  //         mode: "text/x-markdown"
-  //     })
-  // }, [])
 
-  const [value, setValue] = React.useState(
-    "const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)const unfold = (f, seed) => {const go = (f, seed, acc) => {const res = f(seed)return res ? go(f, res[1], acc.concat([res[0]])) : acc}"
-  );
-
-  console.log(
-    firasans,
-    rubik,
-    raleway,
-    nunito,
-    roboto,
-    raleway,
-    poppins,
-    ubuntu
-  );
-
-  let extensions;
+  let extensions = [];
 
   let code = `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 
@@ -100,11 +90,11 @@ export default function page() {
 
   switch (languageMode) {
     case "javascript":
-      extensions = [javascript() , EditorView.lineWrapping ];
+      extensions = [javascript(), EditorView.lineWrapping, FontSizeTheme];
 
       break;
     case "python":
-      extensions = [python()];
+      extensions = [python(), EditorView.lineWrapping, FontSizeTheme];
 
       break;
     // Add other cases for different language modes as needed
@@ -147,15 +137,14 @@ export default function page() {
 
   const { setContainer, state, setView } = useCodeMirror({
     container: editor.current,
+
     extensions,
-    
 
     basicSetup: {
       lineNumbers: false,
       highlightActiveLine: false,
       highlightActiveLineGutter: false,
       foldGutter: false,
-    
     },
     value: code,
     width: "auto",
@@ -208,7 +197,7 @@ export default function page() {
 
               minHeight: "90px",
             }}
-            className={`  rounded-md max-w-[100%] mx-auto my-0 w-full   lg:w-[700px]`}
+            className={`rounded-md max-w-[100%] mx-auto my-0 w-full   lg:w-[700px]`}
           >
             {/* code mirror */}
             <div className="relative mx-auto max-w-[100%] ">
@@ -257,23 +246,6 @@ export default function page() {
                 ref={editor}
               />
             </div>
-
-            {/* <CodeMirrorx
-  value='<h1>I ♥ react-codemirror2</h1>'
-  
-  options={{
-    mode: 'xml',
-    theme: 'material',
-    lineNumbers: true,
-    visualViewport : 'infinity'
-  }}
-  onChange={(editor, data, value) => {
-  }}
-/> */}
-
-            {/* <section>
-        <textarea ref={codeMirrorRef}></textarea>
-    </section> */}
           </div>
         </div>
       </div>
