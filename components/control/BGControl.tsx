@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/sm/store";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ChromePicker, ColorResult, SketchPicker } from "react-color";
@@ -9,10 +9,14 @@ import { useOnClickOutside } from "usehooks-ts";
 import { handleBgUpdate } from "@/sm/features/control/controlSlice";
 import { useToggle } from "usehooks-ts";
 
+import ColorPicker from "react-best-gradient-color-picker";
+
 export default function BGControl() {
   const [value, toggle, setValue] = useToggle(false);
   const ref = useRef(null);
   const dispatch = useDispatch();
+
+  const [color, setColor] = useState("rgba(255,255,255,1)");
 
   const handleClickOutside = () => {
     setValue(false);
@@ -20,11 +24,13 @@ export default function BGControl() {
 
   useOnClickOutside(ref, handleClickOutside);
 
-  const handleChangeBgColor = (color: ColorResult) => {
-    dispatch(handleBgUpdate(color.hex));
+  const handleChangeBgColor = (color:string) => {
+    dispatch(handleBgUpdate(color));
+
+    console.log(color)
   };
 
-  const colorBG = useSelector((state: RootState) => state.control.bg?.hex);
+  const colorBG = useSelector((state: RootState) => state.control.bg);
 
   return (
     <div className="">
@@ -38,25 +44,29 @@ export default function BGControl() {
             setValue((x) => !x);
           }}
           style={{
-            backgroundColor: colorBG,
+            background: colorBG,
           }}
           className={` w-[28px] h-[28px] cursor-pointer`}
         ></div>
 
-
-
-
         <p className="text-base lowercase font-semibold text-[#DDE1E1]">
-            {colorBG}
+          {/* {colorBG} */}
         </p>
       </div>
 
       {value ? (
-        <div ref={ref} className="absolute">
-          <ChromePicker
-            color={colorBG}
-            onChange={(color) => handleChangeBgColor(color)}
-          />
+        <div ref={ref} className="bg-white p-3 rounded-md absolute">
+          <ColorPicker 
+      height={200}
+      width={220}
+      className={''}
+      hideEyeDrop={false}
+      hideGradientAngle={true}
+      hideGradientStop={true}
+      hideGradientControls={true}
+      hideColorGuide={true}
+          
+          value={colorBG} onChange={handleChangeBgColor} />
         </div>
       ) : null}
     </div>

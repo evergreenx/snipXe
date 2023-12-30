@@ -215,7 +215,7 @@ export default function page() {
           <div
             ref={codeRef}
             style={{
-              backgroundColor: BG?.hex,
+              background: BG,
               padding: `${Padding.v}px ${Padding.h}px`,
 
               minHeight: "90px",

@@ -10,7 +10,7 @@ export interface controlSliceState {
   name: string;
   theme: string;
   mode: string;
-  bg: ColorResult | undefined;
+  bg: string | undefined;
   p: {
     v: string;
     h: string;
@@ -29,7 +29,7 @@ const defaultColorResult: ColorResult = {
 const initialState: controlSliceState = {
   mode: "javascript",
   theme: "dracula",
-  bg: defaultColorResult,
+  bg: '#cacad7',
   value: 0,
   name: "john",
   p: {
@@ -45,9 +45,9 @@ export const controlSlice = createSlice({
   name: "control",
   initialState,
   reducers: {
-    handleBgUpdate: (state, action: PayloadAction<Color>) => {
+    handleBgUpdate: (state, action: PayloadAction<string>) => {
       if (state.bg) {
-        state.bg.hex = action.payload as string;
+        state.bg = action.payload as string;
       }
     },
 

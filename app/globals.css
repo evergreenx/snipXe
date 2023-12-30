@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lora&family=Nunito&family=Poppins&family=Raleway&family=Roboto&family=Source+Code+Pro&family=Ubuntu&display=swap');
 
 @layer base {
   :root {

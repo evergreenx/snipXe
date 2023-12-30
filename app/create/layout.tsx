@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <main className="min-h-screen w-full bg-white ">
       <div className=" ">
-        <div className=" pb-[100px]">
+        <div className=" overflow-scroll h-full pb-[100px]">
         {children}
         </div>
      
