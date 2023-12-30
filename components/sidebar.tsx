@@ -5,8 +5,10 @@ import ProfileIcon from "@/assets/profile.svg";
 import LoginIcon from "@/assets/login.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
-function Sidebar() {
+async function Sidebar() {
   const links = [
     {
       name: "canvas",
@@ -19,11 +21,6 @@ function Sidebar() {
       link: "snipx",
       icon: SnipxIcon,
     },
-    {
-      name: "profile",
-      link: "profile",
-      icon: ProfileIcon,
-    },
 
     {
       name: "login ",
@@ -31,6 +28,13 @@ function Sidebar() {
       icon: LoginIcon,
     },
   ];
+
+  const supabase = createClient(cookies());
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  console.log(session);
   return (
     <aside
       className="w-[323px] pt-[112px]
@@ -41,11 +45,7 @@ function Sidebar() {
     bg-primary h-screen"
     >
       <Link
-
-      href={'/create'}
-
-
-
+        href={"/create"}
         className="bg-[#fff]  w-[163px]
 
         mb-[97px]  
@@ -74,6 +74,9 @@ px-[24px] py-[16px] text-primary"
 
       <div className="">
         {links.map((link) => {
+          if (session) {
+            links.pop();
+          }
           return (
             <Link
               href={link.link}
