@@ -218,7 +218,7 @@ export default function page() {
               background: BG,
               padding: `${Padding.v}px ${Padding.h}px`,
 
-              minHeight: "90px",
+              // minHeight: "90px",
             }}
             className={`rounded-md max-w-[100%] mx-auto my-0 w-full   lg:w-[700px]`}
           >

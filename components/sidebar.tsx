@@ -40,7 +40,12 @@ function Sidebar() {
     pb-[55px] z-[99]
     bg-primary h-screen"
     >
-      <button
+      <Link
+
+      href={'/create'}
+
+
+
         className="bg-[#fff]  w-[163px]
 
         mb-[97px]  
@@ -65,7 +70,7 @@ px-[24px] py-[16px] text-primary"
             stroke-linejoin="round"
           />
         </svg>
-      </button>
+      </Link>
 
       <div className="">
         {links.map((link) => {

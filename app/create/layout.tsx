@@ -17,9 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen w-full bg-white ">
+    <main className=" w-full bg-white ">
       <div className=" ">
-        <div className=" overflow-scroll h-full pb-[100px]">
+        <div className=" overflow-hidden overflow-y-auto h-full pb-[100px]">
         {children}
         </div>
      
