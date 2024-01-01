@@ -179,12 +179,9 @@ export default function page() {
   const coderefstate = useSelector((state: RootState) => state.download.ref);
   // const codeRef = useRef<null | (() => void)>(coderefstate);
 
-  const codeRef:React.MutableRefObject<string | null> = useRef<string | null>(null);
+  const codeRef:React.MutableRefObject<string | null| any> = useRef<string | null|any>(null);
 
 
-  console.log(codeRef);
-
-  console.log(coderefstate);
 
   const dispatch = useDispatch();
   
