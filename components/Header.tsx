@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { AvatarHeader } from "./AvatarHeader";
 import { useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
+import type { Database } from "@/lib/database.types";
 
 export default async function Header() {
   const supabase = createClient(cookies());
@@ -11,9 +12,9 @@ export default async function Header() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  let { data: snipx, error } = await supabase.from("snipx").select("*");
 
-  // console.log(snipx);
+
+
   return (
     <div
       className="flex 

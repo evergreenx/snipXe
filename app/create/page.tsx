@@ -84,8 +84,6 @@ export default function page() {
 
   let extensions = [];
 
-
-
   switch (languageMode) {
     case "javascript":
       extensions = [javascript(), EditorView.lineWrapping, FontSizeTheme];
@@ -178,7 +176,7 @@ export default function page() {
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
-  const codeRef  = useRef<null | string>(null);
+  const codeRef = useRef<null | HTMLDivElement>(null);
 
   const dispatch = useDispatch();
   useEffect(() => {

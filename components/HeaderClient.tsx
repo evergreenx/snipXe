@@ -47,9 +47,10 @@ export default function HeaderClient({}) {
       const { data, error } = await supabase
         .from("snipx")
         .upsert([{ ...datax, user_id: Id.user?.id }])
-        .select();
+        .select()
+        .single();
 
-      if (data) router.replace(`/${data[0]?.id}`  );
+      if (data) router.push(`/${data?.id}`);
     } catch {
       alert("an error occured");
     } finally {
