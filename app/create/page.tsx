@@ -176,12 +176,26 @@ export default function page() {
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
-  const codeRef = useRef<null | HTMLDivElement>(null);
+  const coderefstate = useSelector((state: RootState) => state.download.ref);
+  // const codeRef = useRef<null | (() => void)>(coderefstate);
+
+  const codeRef:React.MutableRefObject<string | null> = useRef<string | null>(null);
+
+
+  console.log(codeRef);
+
+  console.log(coderefstate);
 
   const dispatch = useDispatch();
+  
   useEffect(() => {
-    dispatch(handleSetRef(codeRef));
-  }, []);
+    if (codeRef.current) {
+      dispatch(handleSetRef(codeRef.current));
+    }
+  
+   
+  }, [codeRef])
+  
 
   return (
     <>

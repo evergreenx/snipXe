@@ -4,11 +4,11 @@ import { Color, ColorResult, SketchPickerProps } from "react-color";
 
 interface OsInterface {}
 export interface controlSliceState {
-  ref: any;
+  ref: any | null;
 }
 
 const initialState: controlSliceState = {
-  ref: null,
+  ref: 0,
 };
 
 export const downloadSlice = createSlice({
@@ -16,9 +16,7 @@ export const downloadSlice = createSlice({
   initialState,
   reducers: {
     handleSetRef: (state, action: PayloadAction<any | null>) => {
-      if (state.ref) {
-        state.ref = action.payload;
-      }
+      state.ref = action.payload;
     },
   },
 });

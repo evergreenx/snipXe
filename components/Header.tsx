@@ -12,9 +12,6 @@ export default async function Header() {
     data: { session },
   } = await supabase.auth.getSession();
 
-
-
-
   return (
     <div
       className="flex 
@@ -24,14 +21,10 @@ export default async function Header() {
   lg:h-[120px] w-full fixed z-[90] h-[90px] p-[20px]
   gap-[20px] justify-end items-center bg-white shadow-xl"
     >
-      <HeaderClient />
+      <HeaderClient session={session} />
 
       {session && (
         <>
-          {/* <button className="border-[#5465FF] text-[#5465FF] border rounded-lg w-[99px] h-[34px] ">
-            Save
-          </button> */}
-
           <AvatarHeader session={session} />
         </>
       )}
