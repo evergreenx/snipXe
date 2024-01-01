@@ -7,9 +7,14 @@ import html2canvas from "html2canvas";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import * as htmlToImage from "html-to-image";
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+import download from "downloadjs";
 
 export default function HeaderClient({ session }: { session: Session | null }) {
   const coderefstate = useSelector((state: RootState) => state.download.ref);
+
+  const snipxName = useSelector((state: RootState) => state.control.name);
 
   const pathname = usePathname();
 
@@ -21,19 +26,10 @@ export default function HeaderClient({ session }: { session: Session | null }) {
 
   const handleDownloadClick = () => {
     if (coderefstate) {
-      html2canvas(coderefstate, {
-        backgroundColor: null,
-        imageTimeout: 20000,
-      }).then((canvas) => {
-        const link = document.createElement("a");
-        document.body.appendChild(link);
-        link.download = "code.png"; // Set the filename here
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-        document.body.removeChild(link);
+      htmlToImage.toPng(coderefstate, {}).then((canvas) => {
+        download(canvas, snipxName);
 
-        // After downloading, reset the state in Redux
-        // dispatch(resetDownloadCodeImageState());
+       
       });
     }
   };
