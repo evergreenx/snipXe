@@ -23,8 +23,7 @@ export default function HeaderClient({ session }: { session: Session | null }) {
     if (coderefstate) {
       html2canvas(coderefstate, {
         backgroundColor: null,
-        useCORS: true,
-        imageTimeout: 15000,
+        imageTimeout: 20000,
       }).then((canvas) => {
         const link = document.createElement("a");
         document.body.appendChild(link);
