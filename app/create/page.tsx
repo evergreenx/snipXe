@@ -220,7 +220,7 @@ export default function page() {
 
               // minHeight: "90px",
             }}
-            className={`rounded-md max-w-[100%] mx-auto my-0 w-full   lg:w-[700px]`}
+            className={` max-w-[100%] mx-auto my-0 w-full   lg:w-[700px]`}
           >
             {/* code mirror */}
             <div className="relative mx-auto max-w-[100%] ">

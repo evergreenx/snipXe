@@ -5,9 +5,9 @@ import { Session } from "@supabase/supabase-js";
 import html2canvas from "html2canvas";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AvatarDemo from "./Avatar";
 
-export default function HeaderClient({ session }: { session: Session | null }) {
+
+export default function HeaderClient({  }) {
   const coderefstate = useSelector((state: RootState) => state.download.ref);
 
   const handleDownloadClick = () => {
@@ -28,23 +28,14 @@ export default function HeaderClient({ session }: { session: Session | null }) {
         // dispatch(resetDownloadCodeImageState());
       });
     }
-
-    console.log(coderefstate, "second");
   };
 
   return (
-    <div
-      className="flex 
-
-      pr-[80px]
-    
-    lg:h-[120px] w-full fixed z-30 h-[90px] p-[20px]
-    gap-[20px] justify-end items-center bg-white shadow-xl"
-    >
+    <div>
       <div onClick={handleDownloadClick} className="download cursor-pointer">
         <svg
-          width="36"
-          height="36"
+          width="30"
+          height="30"
           viewBox="0 0 36 36"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -58,13 +49,6 @@ export default function HeaderClient({ session }: { session: Session | null }) {
           />
         </svg>
       </div>
-
-      {session && (
-        <AvatarDemo
-          name={session?.user.user_metadata.name}
-          url={session?.user.user_metadata.avatar_url}
-        />
-      )}
     </div>
   );
 }

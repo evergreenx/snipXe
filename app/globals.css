@@ -23,7 +23,7 @@
 
 @layer base {
   * {
-    @apply border-foreground/20;
+    /* @apply border-foreground/20; */
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;

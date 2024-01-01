@@ -29,7 +29,7 @@ const defaultColorResult: ColorResult = {
 const initialState: controlSliceState = {
   mode: "javascript",
   theme: "dracula",
-  bg: '#cacad7',
+  bg: "#cacad7",
   value: 0,
   name: "john",
   p: {

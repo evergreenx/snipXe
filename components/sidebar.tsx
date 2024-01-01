@@ -34,7 +34,7 @@ async function Sidebar() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  console.log(session);
+
   return (
     <aside
       className="w-[323px] pt-[112px]
