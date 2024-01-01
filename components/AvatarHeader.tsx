@@ -19,7 +19,7 @@ export async function AvatarHeader({ session }: { session: Session }) {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="relative h-[36px] w-[36px] rounded-full pl-[60px] ">
+          <button className="relative h-[36px] w-[36px] rounded-full outline-none pl-[60px] ">
             <Avatar className="h-8 w-8">
               <AvatarImage src={session?.user?.user_metadata.avatar_url} />
               <AvatarFallback>

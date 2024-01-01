@@ -1,3 +1,4 @@
+
 import React from "react";
 import CanvasIcon from "@/assets/canvas.svg";
 import SnipxIcon from "@/assets/snip.svg";
@@ -33,7 +34,6 @@ async function Sidebar() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-
 
   return (
     <aside
@@ -74,9 +74,9 @@ px-[24px] py-[16px] text-primary"
 
       <div className="">
         {links.map((link) => {
-          if (session) {
-            links.pop();
-          }
+          // if (session) {
+          //   links.pop();
+          // }
           return (
             <Link
               href={link.link}

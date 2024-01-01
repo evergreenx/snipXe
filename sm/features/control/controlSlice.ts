@@ -2,11 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Color, ColorResult, SketchPickerProps } from "react-color";
 
-interface OsInterface {
-  os: "w" | "m";
-}
 export interface controlSliceState {
-  value: number;
+  value: string;
   name: string;
   theme: string;
   mode: string;
@@ -30,8 +27,8 @@ const initialState: controlSliceState = {
   mode: "javascript",
   theme: "dracula",
   bg: "#cacad7",
-  value: 0,
-  name: "john",
+  value: "console",
+  name: "untitled snipx",
   p: {
     v: "15",
     h: "15",
@@ -55,6 +52,10 @@ export const controlSlice = createSlice({
       state.mode = action.payload;
     },
 
+    handleValueUpdate: (state, action: PayloadAction<string>) => {
+      state.value = action.payload;
+    },
+
     handleThemeUpdate: (state, action: PayloadAction<string>) => {
       state.theme = action.payload;
     },
@@ -76,11 +77,15 @@ export const controlSlice = createSlice({
     handleOSUpdate: (state, action: PayloadAction<"w" | "m">) => {
       state.os = action.payload;
     },
+    handleNameUpdate: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
+  handleNameUpdate,
   handleBgUpdate,
   handleLanguageModeUpdate,
   handleThemeUpdate,
@@ -89,6 +94,7 @@ export const {
   handleFontUpdate,
   handleLineHeightUpdate,
   handleOSUpdate,
+  handleValueUpdate,
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

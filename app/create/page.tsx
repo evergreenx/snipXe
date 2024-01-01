@@ -1,7 +1,13 @@
 "use client";
 
 import Sidebar from "@/components/sidebar";
-import React, { ReactHTMLElement, Ref, useEffect, useRef } from "react";
+import React, {
+  ReactHTMLElement,
+  Ref,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
@@ -28,6 +34,7 @@ import html2canvas from "html2canvas";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import { handleSetRef } from "@/sm/features/control/downloadSlice";
+import { handleValueUpdate } from "@/sm/features/control/controlSlice";
 
 const sourcePro = Source_Code_Pro({ subsets: ["latin"], display: "swap" });
 
@@ -77,18 +84,7 @@ export default function page() {
 
   let extensions = [];
 
-  let code = `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 
-  const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-  
-  const unfold = (f, seed) => {
-    const go = (f, seed, acc) => {
-      const res = f(seed)
-      return res ? go(f, res[1], acc.concat([res[0]])) : acc
-    }
-    return go(f, seed, [])
-  }
-    `;
 
   switch (languageMode) {
     case "javascript":
@@ -137,7 +133,9 @@ export default function page() {
 
   const Padding = useSelector((state: RootState) => state.control.p);
 
-  const { setContainer, state, setView } = useCodeMirror({
+  const value = useSelector((state: RootState) => state.control.value);
+
+  const { setContainer, state, setView, setState } = useCodeMirror({
     container: editor.current,
 
     extensions,
@@ -148,12 +146,14 @@ export default function page() {
       highlightActiveLineGutter: false,
       foldGutter: false,
     },
-    value: code,
+    value: value,
     width: "auto",
 
     height: "auto",
     theme: theme,
   });
+
+  console.group(state);
 
   useEffect(() => {
     if (editor.current) {
@@ -166,32 +166,19 @@ export default function page() {
       ".cm-editor .cm-scroller"
     );
 
-    console.log(scrollerElement, "dd");
+    // console.log(scrollerElement, "dd");
 
     if (scrollerElement) {
       scrollerElement.style.fontFamily = `${selectedFont}`; // Update the font family
     }
   }, [editor.current, selectedFont]);
 
-  console.log(selectedFont);
+  // console.log(selectedFont);
   const preRef = useRef(null);
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
-  const codeRef = useRef(null);
-
-  const downloadCodeAsImage = () => {
-    if (codeRef.current) {
-      html2canvas(codeRef.current).then((canvas) => {
-        const link = document.createElement("a");
-        document.body.appendChild(link);
-        link.download = "code.png"; // Set the filename here
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-        document.body.removeChild(link);
-      });
-    }
-  };
+  const codeRef  = useRef<null | string>(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -300,14 +287,13 @@ export default function page() {
                   </div>
                 )}
               </div>
-              <div
-                className="f"
-                style={{
-                  // fontSize: "16px",
-                  borderRadius: "20px",
-                  display: "block",
+              <CodeMirror
+                value={value}
+                extensions={extensions}
+                theme={theme}
+                onChange={(value, viewUpdate) => {
+                  dispatch(handleValueUpdate(value));
                 }}
-                ref={editor}
               />
             </div>
           </div>

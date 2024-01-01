@@ -19,7 +19,7 @@ const FontSelect = ({ data }: { data: any[] }) => {
 
   const selectedFont = useSelector((state: RootState) => state.control.font);
 
-  console.log(selectedFont, "test");
+  // console.log(selectedFont, "test");
 
   const handleSelectedFont = (value: string) => {
     dispatch(handleFontUpdate(value));

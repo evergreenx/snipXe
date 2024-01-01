@@ -27,7 +27,7 @@ export default function BGControl() {
   const handleChangeBgColor = (color:string) => {
     dispatch(handleBgUpdate(color));
 
-    console.log(color)
+    // console.log(color)
   };
 
   const colorBG = useSelector((state: RootState) => state.control.bg);

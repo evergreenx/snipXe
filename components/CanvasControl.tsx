@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useToggle ,useMediaQuery } from "usehooks-ts";
+import { useToggle, useMediaQuery } from "usehooks-ts";
 
 import BGControl from "./control/BGControl";
 import ThemeControl from "./control/ThemeControl";
@@ -9,31 +9,33 @@ import LanguageControl from "./control/LanguageControl";
 import PaddingControl from "./control/PaddingControl";
 import FontSelect from "./FontSelect";
 import FontControl from "./control/FontControl";
-import { useRef } from 'react'
+import { useRef } from "react";
 
-import { useOnClickOutside } from 'usehooks-ts'
+import { useOnClickOutside } from "usehooks-ts";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/sm/store";
+import { handleNameUpdate } from "@/sm/features/control/controlSlice";
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(false);
-  const ref = useRef(null)
+  const ref = useRef(null);
 
+  const editorState = useSelector((state: RootState) => state.control);
+
+  const dispatch = useDispatch();
 
   const handleClickOutside = () => {
     // Your custom logic here
-   setValue(false)
-  }
+    setValue(false);
+  };
 
-  const matches = useMediaQuery('(min-width: 768px)')
+  const matches = useMediaQuery("(min-width: 768px)");
 
-  useOnClickOutside(ref, handleClickOutside)
+  useOnClickOutside(ref, handleClickOutside);
   return (
-    <div 
-    ref={ref}
-    className="">
+    <div ref={ref} className="">
       <AnimatePresence>
         {value && (
           <motion.aside
-     
-  
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -69,7 +71,8 @@ function CanvasControl() {
                   <input
                     type="text"
                     placeholder="snipx name"
-                    defaultValue={"UNTITLED SNIPX"}
+                    onChange={(e) => dispatch(handleNameUpdate(e.target.value))}
+                    defaultValue={editorState.name}
                     className=" text-[#DDE1E1] w-[80%]   border-b font-semibold text-base bg-transparent outline-none border-b-white"
                   />
 
@@ -101,8 +104,6 @@ function CanvasControl() {
               <PaddingControl />
 
               <FontControl />
-     
-
             </div>
           </motion.aside>
         )}

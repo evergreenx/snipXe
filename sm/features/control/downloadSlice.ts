@@ -8,7 +8,7 @@ export interface controlSliceState {
 }
 
 const initialState: controlSliceState = {
-  ref: "null",
+  ref: null,
 };
 
 export const downloadSlice = createSlice({

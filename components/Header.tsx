@@ -2,6 +2,8 @@ import { createClient } from "@/utils/supabase/server";
 import HeaderClient from "./HeaderClient";
 import { cookies } from "next/headers";
 import { AvatarHeader } from "./AvatarHeader";
+import { useSelector } from "react-redux";
+import { RootState } from "@/sm/store";
 
 export default async function Header() {
   const supabase = createClient(cookies());
@@ -11,7 +13,7 @@ export default async function Header() {
 
   let { data: snipx, error } = await supabase.from("snipx").select("*");
 
-  console.log(snipx);
+  // console.log(snipx);
   return (
     <div
       className="flex 
@@ -25,9 +27,9 @@ export default async function Header() {
 
       {session && (
         <>
-          <button className="border-[#5465FF] text-[#5465FF] border rounded-lg w-[99px] h-[34px] ">
+          {/* <button className="border-[#5465FF] text-[#5465FF] border rounded-lg w-[99px] h-[34px] ">
             Save
-          </button>
+          </button> */}
 
           <AvatarHeader session={session} />
         </>
