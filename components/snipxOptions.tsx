@@ -9,28 +9,35 @@ import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Database } from "@/lib/database.types";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type snpix = Database["public"]["Tables"]["snipx"]["Row"][] | null;
 
 export default function SnipxOptions({ snipx }: { snipx: snpix }) {
   const supabase = createClient();
   const router = useRouter();
-  const handleDelete = async (id: number) => {
-    console.log(id);
-    const { error } = await supabase.from("snipx").delete().eq("id", id).select();
+  const handleDelete = async (event: React.MouseEvent, id: string) => {
+    event.preventDefault();
+    const { error } = await supabase
+      .from("snipx")
+      .delete()
+      .eq("id", id)
+      .select();
 
-    router.refresh()
+    router.refresh();
   };
 
   return (
     <>
       {snipx &&
         snipx?.map((snip) => {
+          let bg: any | string | number | null = snip.bg;
           return (
-            <section
+            <Link
+              href={snip.id}
               key={snip.id}
               style={{
-                background: snip?.bg,
+                background: bg,
               }}
               className="m-[10px] shadow-xl w-[318px] h-[174px] rounded-s-[16px]  p-3 rounded-tr-[4px] rounded-bl-[16px] rounded-br-[4px] rounded-e"
             >
@@ -73,7 +80,7 @@ export default function SnipxOptions({ snipx }: { snipx: snpix }) {
                       />
                     </svg>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-[170px]">
+                  <DropdownMenuContent className="w-[170px] bg-white absolute">
                     <DropdownMenuItem className="flex space-x-[8px] px-[16px] py-[10px]">
                       <svg
                         width="20"
@@ -119,7 +126,9 @@ export default function SnipxOptions({ snipx }: { snipx: snpix }) {
                     </DropdownMenuItem>
 
                     <DropdownMenuItem
-                      onClick={() => handleDelete(snip.id)}
+                      onClick={(event: React.MouseEvent) =>
+                        handleDelete(event, snip.id)
+                      }
                       className="flex space-x-[8px] px-[16px] py-[10px] cursor-pointer"
                     >
                       <svg
@@ -145,7 +154,7 @@ export default function SnipxOptions({ snipx }: { snipx: snpix }) {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-            </section>
+            </Link>
           );
         })}
     </>

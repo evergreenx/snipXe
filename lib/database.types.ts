@@ -49,7 +49,7 @@ export interface Database {
           bg: string | null
           created_at: string
           font: string | null
-          id: number
+          id: string
           lineH: string | null
           mode: string | null
           name: string | null
@@ -63,7 +63,7 @@ export interface Database {
           bg?: string | null
           created_at?: string
           font?: string | null
-          id?: number
+          id?: string
           lineH?: string | null
           mode?: string | null
           name?: string | null
@@ -77,7 +77,7 @@ export interface Database {
           bg?: string | null
           created_at?: string
           font?: string | null
-          id?: number
+          id?: string
           lineH?: string | null
           mode?: string | null
           name?: string | null
