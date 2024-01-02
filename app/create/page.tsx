@@ -29,7 +29,6 @@ import {
   Raleway,
 } from "next/font/google";
 
-import html2canvas from "html2canvas";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";

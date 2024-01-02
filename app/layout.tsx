@@ -35,7 +35,7 @@ export default function RootLayout({
             <Header />
           </div>
 
-          <main className="flex ">{children}</main>
+          <main className=" ">{children}</main>
         </body>
       </ReduxProvider>
 
