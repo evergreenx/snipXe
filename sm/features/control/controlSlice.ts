@@ -14,7 +14,7 @@ export interface controlSliceState {
   };
   font: string;
   lineH: string;
-  os: "w" | "m";
+  os: "w" | "m" | "mx"
 }
 
 const defaultColorResult: ColorResult = {
@@ -30,12 +30,12 @@ const initialState: controlSliceState = {
   value: "console",
   name: "untitled snipx",
   p: {
-    v: "15",
-    h: "15",
+    v: "55",
+    h: "55",
   },
   font: "",
   lineH: "150%",
-  os: "w",
+  os: "mx",
 };
 
 export const controlSlice = createSlice({
@@ -74,7 +74,7 @@ export const controlSlice = createSlice({
     handleLineHeightUpdate: (state, action: PayloadAction<string>) => {
       state.lineH = action.payload;
     },
-    handleOSUpdate: (state, action: PayloadAction<"w" | "m">) => {
+    handleOSUpdate: (state, action: PayloadAction<controlSliceState['os']>) => {
       state.os = action.payload;
     },
     handleNameUpdate: (state, action: PayloadAction<string>) => {

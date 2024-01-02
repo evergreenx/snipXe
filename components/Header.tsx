@@ -16,7 +16,7 @@ export default async function Header() {
     <div
       className="flex 
 
-    pr-[80px]
+    lg:pr-[80px]
   
   lg:h-[120px] w-full fixed z-[90] h-[90px] p-[20px]
   gap-[20px] justify-end items-center bg-white shadow-xl"

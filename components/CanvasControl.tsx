@@ -133,13 +133,15 @@ function CanvasControl() {
       </AnimatePresence>
 
       {!value && (
-        <div className="bg-primary w-[76px] right-0 flex justify-center fixed top-[120px] h-[68px] pt-[24px]">
+        <div 
+        onClick={() => {
+          setValue((x: boolean) => !x);
+        }}
+        className="bg-primary cursor-pointer w-[76px] right-0 flex justify-center fixed top-[120px] h-[68px] pt-[24px]">
           {" "}
           <div
-            className="toogle cursor-pointer"
-            onClick={() => {
-              setValue((x: boolean) => !x);
-            }}
+            className="toogle "
+           
           >
             {" "}
             <svg

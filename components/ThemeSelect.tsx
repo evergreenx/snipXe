@@ -54,9 +54,7 @@ const ThemeSelect = ({ data }: { data: any[] }) => {
           </Select.ScrollUpButton>
           <Select.Viewport className="p-[5px]">
             <Select.Group>
-              {/* <Select.Label className="px-[25px] text-xs leading-[25px] text-mauve11">
-              Fruits
-            </Select.Label> */}
+  
 
               {data.map((i) => {
                 return <SelectItem value={i.value}>{i.name}</SelectItem>;

@@ -2,7 +2,10 @@ import React from "react";
 import ThemeSelect from "../ThemeSelect";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
-import { handleOSUpdate } from "@/sm/features/control/controlSlice";
+import {
+  controlSliceState,
+  handleOSUpdate,
+} from "@/sm/features/control/controlSlice";
 
 export default function ThemeControl() {
   const themes = [
@@ -48,7 +51,7 @@ export default function ThemeControl() {
   const os = useSelector((state: RootState) => state.control.os);
   const dispatch = useDispatch();
 
-  const handleChangeOS = (os: "m" | "w") => {
+  const handleChangeOS = (os: controlSliceState["os"]) => {
     dispatch(handleOSUpdate(os));
   };
 
@@ -149,6 +152,43 @@ export default function ThemeControl() {
                     stroke-width=".5"
                   ></circle>
                 </g>
+              </svg>
+            </div>
+
+            <div
+              onClick={() => handleChangeOS("mx")}
+              className={`p-2 rounded cursor-pointer w-[55px]
+            
+            
+            ${os === "mx" && "border-[0.5px] border-[#DDE1E1] "}
+            
+            `}
+            >
+              <svg viewBox="0 0 420 100" focusable="false">
+                <circle
+                  fill="transparent"
+                  stroke="#ff5f57"
+                  stroke-width="16"
+                  cx="50"
+                  cy="50"
+                  r="42"
+                ></circle>
+                <circle
+                  fill="transparent"
+                  stroke="#febc2e"
+                  stroke-width="16"
+                  cx="210"
+                  cy="50"
+                  r="42"
+                ></circle>
+                <circle
+                  fill="transparent"
+                  stroke="#28c840"
+                  stroke-width="16"
+                  cx="370"
+                  cy="50"
+                  r="42"
+                ></circle>
               </svg>
             </div>
           </div>

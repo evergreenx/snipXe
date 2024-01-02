@@ -29,7 +29,6 @@ import {
   Raleway,
 } from "next/font/google";
 
-
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import { handleSetRef } from "@/sm/features/control/downloadSlice";
@@ -250,7 +249,7 @@ export default function page() {
                       ></path>
                     </svg>
                   </div>
-                ) : (
+                ) : os === "w" ? (
                   <div className="os absolute top-4  z-50  ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -288,6 +287,35 @@ export default function page() {
                           stroke-width=".5"
                         ></circle>
                       </g>
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="os absolute top-4 w-[55px]  z-50  ">
+                    <svg viewBox="0 0 420 100" focusable="false">
+                      <circle
+                        fill="transparent"
+                        stroke="#ff5f57"
+                        stroke-width="16"
+                        cx="50"
+                        cy="50"
+                        r="42"
+                      ></circle>
+                      <circle
+                        fill="transparent"
+                        stroke="#febc2e"
+                        stroke-width="16"
+                        cx="210"
+                        cy="50"
+                        r="42"
+                      ></circle>
+                      <circle
+                        fill="transparent"
+                        stroke="#28c840"
+                        stroke-width="16"
+                        cx="370"
+                        cy="50"
+                        r="42"
+                      ></circle>
                     </svg>
                   </div>
                 )}
