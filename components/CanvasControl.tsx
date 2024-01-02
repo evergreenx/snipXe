@@ -15,6 +15,18 @@ import { useOnClickOutside } from "usehooks-ts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import { handleNameUpdate } from "@/sm/features/control/controlSlice";
+
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(false);
   const ref = useRef(null);
@@ -32,9 +44,17 @@ function CanvasControl() {
 
   useOnClickOutside(ref, handleClickOutside);
   return (
-    <div ref={ref} className="">
+<>
       <AnimatePresence>
         {value && (
+          <>
+    <div
+        onClick={() => {
+          setValue((x) => !x);
+        }}
+        className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"
+      ></div>
+
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -42,6 +62,7 @@ function CanvasControl() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className={`w-[323px] z-[99] fixed lg:fixed lg:top-[121px] top-[91px] mb-[100px] pb-[200px]   right-0  overflow-y-scroll bg-primary h-screen text-white `}
           >
+
             <div
               className="toogle w-[10px] cursor-pointer mt-[24px] px-[28px]"
               onClick={() => {
@@ -106,6 +127,8 @@ function CanvasControl() {
               <FontControl />
             </div>
           </motion.aside>
+
+          </>
         )}
       </AnimatePresence>
 
@@ -144,7 +167,7 @@ function CanvasControl() {
           </div>{" "}
         </div>
       )}
-    </div>
+    </>
   );
 }
 
