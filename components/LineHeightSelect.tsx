@@ -118,7 +118,7 @@ const LineHeightSelect = () => {
             <path
               d="M5 7.49996L10 12.5L15 7.49996"
               stroke="#DDE1E1"
-              stroke-width="1.4"
+              strokeWidth="1.4"
               stroke-linecap="round"
               stroke-linejoin="round"
             />

@@ -26,6 +26,11 @@ export default async function page() {
   if (!session) {
     redirect("/login");
   }
+
+  if(error) {
+
+    console.log(error)
+  }
   return (
     <div className="mt-[200px] grid gap-4 grid-cols-1 lg:grid-cols-3 mx-auto  lg:ml-[400px] lg:mr-[80px] px-6  ">
       <RefreshOnFocus />

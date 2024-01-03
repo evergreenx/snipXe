@@ -39,7 +39,7 @@ const LanguageSelect = ({ data }: { data: any[] }) => {
             <path
               d="M6 9L12 15L18 9"
               stroke="#DDE1E1"
-              stroke-width="2"
+              strokeWidth="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />

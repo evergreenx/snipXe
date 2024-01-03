@@ -73,7 +73,7 @@ px-[24px] py-[16px] text-primary"
           <path
             d="M10 4.16666V15.8333M4.16669 9.99999H15.8334"
             stroke="#0D102A"
-            stroke-width="2"
+            strokeWidth="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           />

@@ -62,7 +62,7 @@ export async function AvatarHeader({ session }: { session: Session }) {
                 <path
                   d="M15 6.66667L18.3333 10M18.3333 10L15 13.3333M18.3333 10H7.49996M12.5 3.50337C11.4377 2.86523 10.2043 2.5 8.88885 2.5C4.90012 2.5 1.66663 5.85786 1.66663 10C1.66663 14.1421 4.90012 17.5 8.88885 17.5C10.2043 17.5 11.4377 17.1348 12.5 16.4966"
                   stroke="#0D102A"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />

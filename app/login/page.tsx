@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 import { createClient } from "@/utils/supabase/client";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Session } from "@supabase/supabase-js";
 
@@ -131,7 +131,7 @@ export default function Login({
 
         <div
           onClick={signInMicrosoft}
-          className="ms
+          className="ms cursor-pointer
         mb-[24px]
         lg:w-[320px]
         mx-auto

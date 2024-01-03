@@ -268,7 +268,7 @@ export default function page() {
                           r="6"
                           fill="#FF5F56"
                           stroke="#E0443E"
-                          stroke-width=".5"
+                          strokeWidth=".5"
                         ></circle>
                         <circle
                           cx="26"
@@ -276,7 +276,7 @@ export default function page() {
                           r="6"
                           fill="#FFBD2E"
                           stroke="#DEA123"
-                          stroke-width=".5"
+                          strokeWidth=".5"
                         ></circle>
                         <circle
                           cx="46"
@@ -284,7 +284,7 @@ export default function page() {
                           r="6"
                           fill="#27C93F"
                           stroke="#1AAB29"
-                          stroke-width=".5"
+                          strokeWidth=".5"
                         ></circle>
                       </g>
                     </svg>
@@ -295,7 +295,7 @@ export default function page() {
                       <circle
                         fill="transparent"
                         stroke="#ff5f57"
-                        stroke-width="16"
+                        strokeWidth="16"
                         cx="50"
                         cy="50"
                         r="42"
@@ -303,7 +303,7 @@ export default function page() {
                       <circle
                         fill="transparent"
                         stroke="#febc2e"
-                        stroke-width="16"
+                        strokeWidth="16"
                         cx="210"
                         cy="50"
                         r="42"
@@ -311,7 +311,7 @@ export default function page() {
                       <circle
                         fill="transparent"
                         stroke="#28c840"
-                        stroke-width="16"
+                        strokeWidth="16"
                         cx="370"
                         cy="50"
                         r="42"
