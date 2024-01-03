@@ -28,8 +28,6 @@ export default function HeaderClient({ session }: { session: Session | null }) {
     if (coderefstate) {
       htmlToImage.toPng(coderefstate, {}).then((canvas) => {
         download(canvas, snipxName);
-
-       
       });
     }
   };
@@ -57,8 +55,9 @@ export default function HeaderClient({ session }: { session: Session | null }) {
 
   return (
     <>
+  
       {pathname === "/create" && (
-        <div>
+        <div className="">
           <div
             onClick={handleDownloadClick}
             className="download cursor-pointer"
@@ -85,7 +84,7 @@ export default function HeaderClient({ session }: { session: Session | null }) {
       {pathname === "/create" && session && (
         <button
           onClick={handleupdate}
-          className="border-[#5465FF] text-[#5465FF] border rounded-lg w-[99px] h-[34px] "
+          className="border-[#5465FF]  text-[#5465FF] border rounded-lg w-[99px] h-[34px] "
         >
           {isLoadingSave ? "saving" : "save"}
         </button>
