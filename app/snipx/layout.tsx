@@ -25,7 +25,7 @@ export default async function RootLayout({
   return (
     <main className=" overflow-y-auto  w-full bg-white ">
       <div className=" ">
-        <div className="  h-full pb-[100px]">
+        <div className="  h-full">
           {children}
         </div>
       </div>

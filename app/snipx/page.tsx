@@ -19,7 +19,7 @@ export default async function page() {
   let { data: snipx, error } = await supabase.from("snipx").select("*");
 
   return (
-    <div className="mt-[200px] grid gap-4 grid-cols-1 lg:grid-cols-3 place-content-center mx-auto  lg:ml-[400px] lg:mr-[80px] p-3  ">
+    <div className="mt-[200px] grid gap-4 grid-cols-1 lg:grid-cols-3 mx-auto  lg:ml-[400px] lg:mr-[80px] px-6  ">
       <RefreshOnFocus />
 
       {snipx?.length === 0 && (
