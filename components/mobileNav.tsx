@@ -128,7 +128,7 @@ export default function MobileNav({ session }: { session: Session | null }) {
                 >
                   <Image src={link.icon} alt={link.name} />
 
-                  <p>{link.name}</p>
+                  <motion.p>{link.name}</motion.p>
                 </div>
               );
             })}

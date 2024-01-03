@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import SnipxOptions from "@/components/snipxOptions";
 import { RefreshOnFocus } from "@/components/RefreshOnFocus";
+import { redirect } from "next/navigation";
 
 export const revalidate = 10;
 export default async function page() {
@@ -18,6 +19,13 @@ export default async function page() {
 
   let { data: snipx, error } = await supabase.from("snipx").select("*");
 
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <div className="mt-[200px] grid gap-4 grid-cols-1 lg:grid-cols-3 mx-auto  lg:ml-[400px] lg:mr-[80px] px-6  ">
       <RefreshOnFocus />

@@ -14,9 +14,18 @@ export default function Login({
   const [userData, setUserData] = useState<Session | null>(null);
 
   const supabase = createClient();
-  const signIn = async () => {
+  const signInGithub = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "github",
+      options: {
+        redirectTo: `${origin}/auth/callback`,
+      },
+    });
+  };
+
+  const signInMicrosoft = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "azure",
       options: {
         redirectTo: `${origin}/auth/callback`,
       },
@@ -39,11 +48,15 @@ export default function Login({
   if (userData?.user) {
     return router.push("/create");
   }
+
+  if (!userData) {
+    router.push("/login");
+  }
   return (
     <div className="flex-1 flex flex-col w-full px-3   justify-center mx-auto gap-2">
       <div className="animate-in flex-1 flex flex-col w-full justify-center mt-[200px] ">
         <button
-          onClick={signIn}
+          onClick={signInGithub}
           className="gh
         mb-[24px]
         lg:w-[320px]
@@ -117,7 +130,8 @@ export default function Login({
         </div>
 
         <div
-          className="gg
+          onClick={signInMicrosoft}
+          className="ms
         mb-[24px]
         lg:w-[320px]
         mx-auto
@@ -125,17 +139,33 @@ export default function Login({
         w-full  border-[0.25px] border-[#DDE1E1] rounded-md bg-white flex px-[24px] py-[12px] items-center space-x-[24px]  "
         >
           <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
             width="36"
             height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
           >
-            <rect width="36" height="36" rx="18" fill="#00A4EF" />
-            <path d="M9 9H17.5535V17.5535H9V9Z" fill="white" />
-            <path d="M18.4465 9H27V17.5535H18.4465V9Z" fill="white" />
-            <path d="M9 18.4465H17.5535V27H9V18.4465Z" fill="white" />
-            <path d="M18.4465 18.4465H27V27H18.4465V18.4465Z" fill="white" />
+            <path
+              fill="#ff5722"
+              d="M6 6H22V22H6z"
+              transform="rotate(-180 14 14)"
+            ></path>
+            <path
+              fill="#4caf50"
+              d="M26 6H42V22H26z"
+              transform="rotate(-180 34 14)"
+            ></path>
+            <path
+              fill="#ffc107"
+              d="M26 26H42V42H26z"
+              transform="rotate(-180 34 34)"
+            ></path>
+            <path
+              fill="#03a9f4"
+              d="M6 26H22V42H6z"
+              transform="rotate(-180 14 34)"
+            ></path>
           </svg>
 
           <p className="text-base text-primary font-medium">
