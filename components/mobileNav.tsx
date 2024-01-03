@@ -9,8 +9,9 @@ import LoginIcon from "@/assets/login.svg";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Session } from "@supabase/supabase-js";
 
-export default function MobileNav() {
+export default function MobileNav({session} : {session : Session | null}) {
   const router = useRouter();
   const links = [
     {
@@ -33,7 +34,13 @@ export default function MobileNav() {
   ];
   const [value, toggle, setValue] = useToggle(true);
 
-  console.log(value);
+  if (session) {
+    delete links[2];
+  }
+
+  if (!session) {
+    delete links[1];
+  }
   return (
     <div className="mobile-nav justify-start lg:hidden">
       {value ? (
@@ -94,7 +101,7 @@ export default function MobileNav() {
               <div
                 onClick={() => {
                   router.push(link.link);
-                  setValue(false);
+                  toggle();
                 }}
                 className="text-black font-medium
           space-x-[4px] items-center

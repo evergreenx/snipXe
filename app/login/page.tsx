@@ -2,15 +2,19 @@
 import Link from "next/link";
 
 import { createClient } from "@/utils/supabase/client";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Session } from "@supabase/supabase-js";
 
 export default function Login({
   searchParams,
 }: {
   searchParams: { message: string };
 }) {
+  const [userData, setUserData] = useState<Session | null>(null);
+
+  const supabase = createClient();
   const signIn = async () => {
-    const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
@@ -19,13 +23,26 @@ export default function Login({
     });
   };
 
+  const router = useRouter();
+  useEffect(() => {
+    const handleFetchUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      setUserData(session);
+    };
+
+    handleFetchUser();
+  }, [supabase.auth]);
+
+  if (userData?.user) {
+    return router.push("/create");
+  }
   return (
     <div className="flex-1 flex flex-col w-full px-3   justify-center mx-auto gap-2">
-    
-
       <div className="animate-in flex-1 flex flex-col w-full justify-center mt-[200px] ">
         <button
-     
           onClick={signIn}
           className="gh
         mb-[24px]

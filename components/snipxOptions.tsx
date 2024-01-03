@@ -39,7 +39,7 @@ export default function SnipxOptions({ snipx }: { snipx: snpix }) {
               style={{
                 background: bg,
               }}
-              className="m-[10px] shadow-xl w-[318px] h-[174px] rounded-s-[16px]  p-3 rounded-tr-[4px] rounded-bl-[16px] rounded-br-[4px] rounded-e"
+              className="m-[10px] shadow-xl w-full lg:w-[318px] h-[174px] rounded-s-[16px]  p-3 rounded-tr-[4px] rounded-bl-[16px] rounded-br-[4px] rounded-e"
             >
               <div className="flex justify-between items-center">
                 <p className="text-[14px] font-medium text-[#0D102A]">

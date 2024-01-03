@@ -2,9 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import HeaderClient from "./HeaderClient";
 import { cookies } from "next/headers";
 import { AvatarHeader } from "./AvatarHeader";
-import { useSelector } from "react-redux";
-import { RootState } from "@/sm/store";
-import type { Database } from "@/lib/database.types";
+
 import MobileNav from "./mobileNav";
 
 export default async function Header() {
@@ -25,7 +23,7 @@ export default async function Header() {
   gap-[20px] items-center bg-white border-b-2 "
     >
       {" "}
-      <MobileNav />
+      <MobileNav session={session} />
       <div className="flex items-center space-x-7">
         <HeaderClient session={session} />
         {session && (
