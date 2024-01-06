@@ -19,7 +19,7 @@ if (session) {
 
   if(!session) {
 
-    redirect('/login')
+    redirect('/create')
   }
   return <></>;
 }

@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import {
   controlSliceState,
+  handleOSActiveUpdate,
   handleOSUpdate,
 } from "@/sm/features/control/controlSlice";
+
+import { Switch } from "@/components/ui/switch";
 
 export default function ThemeControl() {
   const themes = [
@@ -49,11 +52,20 @@ export default function ThemeControl() {
   ];
 
   const os = useSelector((state: RootState) => state.control.os);
+
+  const osActive = useSelector((state: RootState) => state.control.os.active);
+
   const dispatch = useDispatch();
 
-  const handleChangeOS = (os: controlSliceState["os"]) => {
+  const handleChangeOS = (os: controlSliceState["os"]["type"]) => {
     dispatch(handleOSUpdate(os));
   };
+
+  const handleChangeOSActive = (os: controlSliceState["os"]["active"]) => {
+    dispatch(handleOSActiveUpdate(os));
+  };
+
+  console.log(osActive)
 
   return (
     <div className="border-b-[0.5px] border-t-[0.5px]  border-[#414D77]">
@@ -64,16 +76,23 @@ export default function ThemeControl() {
 
         <ThemeSelect data={themes} />
 
-        <div className="os flex space-x-6 items-center mt-[20px] ">
-          <p className="text-sm">OS</p>
+        <div className="os flex space-x-[13px] items-center mt-[20px] ">
+          <p className="text-sm flex space-x-[10px] items-center">
+            <p className="">OS</p>
 
-          <div className="flex space-x-5 p-2">
+            <Switch
+              onCheckedChange={() => handleChangeOSActive(!osActive)}
+              defaultChecked={os.active}
+            />
+          </p>
+
+          <div className="flex space-x-[4px] p-2">
             <div
               onClick={() => handleChangeOS("m")}
-              className={`p-2 rounded cursor-pointer 
+              className={`p-2 rounded cursor-pointer  w-[60px]
             
             
-            ${os === "m" && "border-[0.5px] border-[#DDE1E1] "}
+            ${os.type === "m" && "border-[0.5px] border-[#DDE1E1] "}
             
             `}
             >
@@ -109,13 +128,12 @@ export default function ThemeControl() {
                 ></path>
               </svg>
             </div>
-
             <div
               onClick={() => handleChangeOS("w")}
               className={`p-2 rounded cursor-pointer 
+              w-[60px]
             
-            
-            ${os === "w" && "border-[0.5px] border-[#DDE1E1] "}
+            ${os.type === "w" && "border-[0.5px] border-[#DDE1E1] "}
             
             `}
             >
@@ -154,17 +172,21 @@ export default function ThemeControl() {
                 </g>
               </svg>
             </div>
-
             <div
               onClick={() => handleChangeOS("mx")}
-              className={`p-2 rounded cursor-pointer w-[55px]
+              className={`p-2 rounded cursor-pointer w-[60px]
             
             
-            ${os === "mx" && "border-[0.5px] border-[#DDE1E1] "}
+            ${os.type === "mx" && "border-[0.5px] border-[#DDE1E1] "}
             
             `}
             >
-              <svg viewBox="0 0 420 100" focusable="false">
+              <svg
+                viewBox="0 0 420 100"
+                width="38"
+                height="14"
+                focusable="false"
+              >
                 <circle
                   fill="transparent"
                   stroke="#ff5f57"

@@ -29,13 +29,16 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0"/>
       </Head>
       <ReduxProvider>
-        <body className="bg-background text-foreground">
-          <div className=" justify-between">
-            <Sidebar />
+        <body className="bg-background text-foreground flex">
+    
+    <>
+    <Sidebar />
             <Header />
-          </div>
+    </>
+       
+     
 
-          <main className=" ">{children}</main>
+          <main className="w-full ">{children}</main>
         </body>
       </ReduxProvider>
 

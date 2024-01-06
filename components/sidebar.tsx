@@ -48,7 +48,7 @@ async function Sidebar() {
       className="w-[323px] pt-[112px]
 
       hidden lg:block
-      lg:fixed
+
     pb-[55px] z-[99]
     bg-primary h-screen"
     >

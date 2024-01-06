@@ -14,7 +14,10 @@ export interface controlSliceState {
   };
   font: string;
   lineH: string;
-  os: "w" | "m" | "mx"
+  os: {
+    type: "w" | "m" | "mx";
+    active?: boolean;
+  };
 }
 
 const defaultColorResult: ColorResult = {
@@ -35,7 +38,10 @@ const initialState: controlSliceState = {
   },
   font: "",
   lineH: "150%",
-  os: "mx",
+  os: {
+    type: "mx",
+    active: false,
+  },
 };
 
 export const controlSlice = createSlice({
@@ -74,9 +80,20 @@ export const controlSlice = createSlice({
     handleLineHeightUpdate: (state, action: PayloadAction<string>) => {
       state.lineH = action.payload;
     },
-    handleOSUpdate: (state, action: PayloadAction<controlSliceState['os']>) => {
-      state.os = action.payload;
+    handleOSUpdate: (
+      state,
+      action: PayloadAction<controlSliceState["os"]["type"]>
+    ) => {
+      state.os.type = action.payload;
     },
+
+    handleOSActiveUpdate: (
+      state,
+      action: PayloadAction<controlSliceState["os"]["active"]>
+    ) => {
+      state.os.active = action.payload;
+    },
+
     handleNameUpdate: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
@@ -95,6 +112,7 @@ export const {
   handleLineHeightUpdate,
   handleOSUpdate,
   handleValueUpdate,
+  handleOSActiveUpdate,
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

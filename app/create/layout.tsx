@@ -23,14 +23,14 @@ export default async function RootLayout({
     data: { session },
   } = await supabase.auth.getSession();
   return (
-    <main className=" w-full bg-white ">
-      <div className=" ">
-        <div className=" overflow-hidden overflow-y-auto h-full pb-[100px]">
+
+      <div className="  w-full ">
+        <div className=" ">
           {children}
         </div>
 
         <CanvasControl />
       </div>
-    </main>
+   
   );
 }
