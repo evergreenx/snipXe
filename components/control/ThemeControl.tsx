@@ -58,6 +58,8 @@ export default function ThemeControl() {
   const dispatch = useDispatch();
 
   const handleChangeOS = (os: controlSliceState["os"]["type"]) => {
+
+    if (osActive)
     dispatch(handleOSUpdate(os));
   };
 
@@ -65,7 +67,6 @@ export default function ThemeControl() {
     dispatch(handleOSActiveUpdate(os));
   };
 
-  console.log(osActive)
 
   return (
     <div className="border-b-[0.5px] border-t-[0.5px]  border-[#414D77]">
@@ -92,7 +93,7 @@ export default function ThemeControl() {
               className={`p-2 rounded cursor-pointer  w-[60px]
             
             
-            ${os.type === "m" && "border-[0.5px] border-[#DDE1E1] "}
+            ${os.type === "m" && osActive && "border-[0.5px] border-[#DDE1E1] "}
             
             `}
             >
@@ -133,7 +134,7 @@ export default function ThemeControl() {
               className={`p-2 rounded cursor-pointer 
               w-[60px]
             
-            ${os.type === "w" && "border-[0.5px] border-[#DDE1E1] "}
+            ${os.type === "w" && osActive && "border-[0.5px] border-[#DDE1E1] "}
             
             `}
             >
@@ -177,7 +178,7 @@ export default function ThemeControl() {
               className={`p-2 rounded cursor-pointer w-[60px]
             
             
-            ${os.type === "mx" && "border-[0.5px] border-[#DDE1E1] "}
+            ${os.type === "mx" && osActive && "border-[0.5px] border-[#DDE1E1] "}
             
             `}
             >

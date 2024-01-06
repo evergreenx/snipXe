@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
-import CodeMirror, { useCodeMirror } from "@uiw/react-codemirror";
+import CodeMirror, { Extension, useCodeMirror } from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 
@@ -82,7 +82,7 @@ export default function page() {
     },
   });
 
-  let extensions = [];
+  let extensions : Extension[] | undefined = [];
 
   switch (languageMode) {
     case "javascript":
@@ -102,7 +102,7 @@ export default function page() {
       break;
   }
 
-  let theme = undefined;
+  let theme : Extension | undefined = undefined;
 
   switch (selectedTheme) {
     case "dracula":
@@ -177,7 +177,7 @@ export default function page() {
   
   const osActive = useSelector((state: RootState) => state.control.os.active);
 
-  console.log(osActive)
+
 
   const coderefstate = useSelector((state: RootState) => state.download.ref);
   // const codeRef = useRef<null | (() => void)>(coderefstate);

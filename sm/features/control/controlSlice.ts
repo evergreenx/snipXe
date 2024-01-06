@@ -7,7 +7,7 @@ export interface controlSliceState {
   name: string;
   theme: string;
   mode: string;
-  bg: string | undefined;
+  bg: string ;
   p: {
     v: string;
     h: string;
