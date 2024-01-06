@@ -7,7 +7,7 @@ export interface controlSliceState {
   name: string;
   theme: string;
   mode: string;
-  bg: string ;
+  bg: string;
   p: {
     v: string;
     h: string;
@@ -30,7 +30,7 @@ const initialState: controlSliceState = {
   mode: "javascript",
   theme: "dracula",
   bg: "#cacad7",
-  value: "console",
+  value: `console.log('test mode')`,
   name: "untitled snipx",
   p: {
     v: "55",

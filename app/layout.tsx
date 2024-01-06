@@ -38,7 +38,7 @@ export default function RootLayout({
        
      
 
-          <main className="w-full overflow-hidden ">{children}</main>
+          <main className="w-full ">{children}</main>
         </body>
       </ReduxProvider>
 
