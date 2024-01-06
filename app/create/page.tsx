@@ -82,7 +82,7 @@ export default function page() {
     },
   });
 
-  let extensions : Extension[] | undefined = [];
+  let extensions: Extension[] | undefined = [];
 
   switch (languageMode) {
     case "javascript":
@@ -102,7 +102,7 @@ export default function page() {
       break;
   }
 
-  let theme : Extension | undefined = undefined;
+  let theme: Extension | undefined = undefined;
 
   switch (selectedTheme) {
     case "dracula":
@@ -174,10 +174,7 @@ export default function page() {
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
-  
   const osActive = useSelector((state: RootState) => state.control.os.active);
-
-
 
   const coderefstate = useSelector((state: RootState) => state.download.ref);
   // const codeRef = useRef<null | (() => void)>(coderefstate);
@@ -195,18 +192,26 @@ export default function page() {
   }, [codeRef]);
 
   return (
-    <div className="bg-white w-full flex items-center justify-center h-screen">
+    <div className="    w-screen ">
       <TransformWrapper
         initialScale={1}
+        limitToBounds={false}
+        centerZoomedOut={true}
         centerOnInit={true}
-        // initialPositionX={200}
-        // initialPositionY={100}
+        initialPositionX={200}
+        initialPositionY={300}
+        
       >
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
           <>
-            <TransformComponent>
-              <div className="  mt-[200px]   lg:flex w-full m-[10px]  p-3 ">
-                <div className="">
+            <div className="  ">
+              <TransformComponent
+                wrapperStyle={{
+                  width: "100%",
+                  height: "100vh",
+                }}
+              >
+                <div className="   ">
                   <div
                     ref={codeRef}
                     style={{
@@ -219,119 +224,115 @@ export default function page() {
                   >
                     {/* code mirror */}
                     <div className="relative mx-auto max-w-[100%] ">
-
-
-
-
                       {/* OS */}
-                      {
-                      osActive &&   <div className="os    z-50 ml-[14px]">
-                      {os.type === "m" ? (
-                        <div className="os absolute top-4  right-4 z-50 ml-[14px]">
-                          <svg
-                            width="58"
-                            height="14"
-                            viewBox="0 0 58 14"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M1 7H11"
-                              stroke="#878787"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                            <path
-                              d="M35 1H25C24.4477 1 24 1.44772 24 2V12C24 12.5523 24.4477 13 25 13H35C35.5523 13 36 12.5523 36 12V2C36 1.44772 35.5523 1 35 1Z"
-                              stroke="#878787"
-                            ></path>
-                            <path
-                              d="M47 2L57 12"
-                              stroke="#878787"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                            <path
-                              d="M47 12L57 2"
-                              stroke="#878787"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </svg>
-                        </div>
-                      ) : os.type === "w" ? (
-                        <div className="os absolute top-4  z-50  ">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="54"
-                            height="14"
-                            viewBox="0 0 54 14"
-                          >
-                            <g
-                              fill="none"
-                              fill-rule="evenodd"
-                              transform="translate(1 1)"
-                            >
-                              <circle
-                                cx="6"
-                                cy="6"
-                                r="6"
-                                fill="#FF5F56"
-                                stroke="#E0443E"
-                                strokeWidth=".5"
-                              ></circle>
-                              <circle
-                                cx="26"
-                                cy="6"
-                                r="6"
-                                fill="#FFBD2E"
-                                stroke="#DEA123"
-                                strokeWidth=".5"
-                              ></circle>
-                              <circle
-                                cx="46"
-                                cy="6"
-                                r="6"
-                                fill="#27C93F"
-                                stroke="#1AAB29"
-                                strokeWidth=".5"
-                              ></circle>
-                            </g>
-                          </svg>
-                        </div>
-                      ) : (
-                        <div className="os absolute top-4 w-[55px]  z-50  ">
-                          <svg viewBox="0 0 420 100" focusable="false">
-                            <circle
-                              fill="transparent"
-                              stroke="#ff5f57"
-                              strokeWidth="16"
-                              cx="50"
-                              cy="50"
-                              r="42"
-                            ></circle>
-                            <circle
-                              fill="transparent"
-                              stroke="#febc2e"
-                              strokeWidth="16"
-                              cx="210"
-                              cy="50"
-                              r="42"
-                            ></circle>
-                            <circle
-                              fill="transparent"
-                              stroke="#28c840"
-                              strokeWidth="16"
-                              cx="370"
-                              cy="50"
-                              r="42"
-                            ></circle>
-                          </svg>
+                      {osActive && (
+                        <div className="os    z-50 ml-[14px]">
+                          {os.type === "m" ? (
+                            <div className="os absolute top-4  right-4 z-50 ml-[14px]">
+                              <svg
+                                width="58"
+                                height="14"
+                                viewBox="0 0 58 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M1 7H11"
+                                  stroke="#878787"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>
+                                <path
+                                  d="M35 1H25C24.4477 1 24 1.44772 24 2V12C24 12.5523 24.4477 13 25 13H35C35.5523 13 36 12.5523 36 12V2C36 1.44772 35.5523 1 35 1Z"
+                                  stroke="#878787"
+                                ></path>
+                                <path
+                                  d="M47 2L57 12"
+                                  stroke="#878787"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>
+                                <path
+                                  d="M47 12L57 2"
+                                  stroke="#878787"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>
+                              </svg>
+                            </div>
+                          ) : os.type === "w" ? (
+                            <div className="os absolute top-4  z-50  ">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="54"
+                                height="14"
+                                viewBox="0 0 54 14"
+                              >
+                                <g
+                                  fill="none"
+                                  fill-rule="evenodd"
+                                  transform="translate(1 1)"
+                                >
+                                  <circle
+                                    cx="6"
+                                    cy="6"
+                                    r="6"
+                                    fill="#FF5F56"
+                                    stroke="#E0443E"
+                                    strokeWidth=".5"
+                                  ></circle>
+                                  <circle
+                                    cx="26"
+                                    cy="6"
+                                    r="6"
+                                    fill="#FFBD2E"
+                                    stroke="#DEA123"
+                                    strokeWidth=".5"
+                                  ></circle>
+                                  <circle
+                                    cx="46"
+                                    cy="6"
+                                    r="6"
+                                    fill="#27C93F"
+                                    stroke="#1AAB29"
+                                    strokeWidth=".5"
+                                  ></circle>
+                                </g>
+                              </svg>
+                            </div>
+                          ) : (
+                            <div className="os absolute top-4 w-[55px]  z-50  ">
+                              <svg viewBox="0 0 420 100" focusable="false">
+                                <circle
+                                  fill="transparent"
+                                  stroke="#ff5f57"
+                                  strokeWidth="16"
+                                  cx="50"
+                                  cy="50"
+                                  r="42"
+                                ></circle>
+                                <circle
+                                  fill="transparent"
+                                  stroke="#febc2e"
+                                  strokeWidth="16"
+                                  cx="210"
+                                  cy="50"
+                                  r="42"
+                                ></circle>
+                                <circle
+                                  fill="transparent"
+                                  stroke="#28c840"
+                                  strokeWidth="16"
+                                  cx="370"
+                                  cy="50"
+                                  r="42"
+                                ></circle>
+                              </svg>
+                            </div>
+                          )}
                         </div>
                       )}
-                    </div>
-                      }
-                    
+
                       <CodeMirror
                         value={value}
                         extensions={extensions}
@@ -343,10 +344,10 @@ export default function page() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </TransformComponent>
+              </TransformComponent>
+            </div>
 
-            <div className="p-2 left-0  absolute  w-[130px] m-[10px] lg:ml-[400px] bottom-0 flex space-x-2 items-center bg-primary rounded-md ">
+            <div className="p-2 left-0  absolute  w-[130px] m-[10px] lg:ml-[400px] bottom-0 flex space-x-2 items-center bg-primary  ">
               <button className=" p-2 outline-none" onClick={() => zoomIn()}>
                 <svg
                   viewBox="0 0 24 24"
