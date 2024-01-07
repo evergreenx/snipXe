@@ -65,7 +65,7 @@ const FontSelect = ({ data }: { data: any[] }) => {
           <Select.Viewport className="p-[5px]">
             <Select.Group>
               {data.map((i) => {
-                return <SelectItem value={i.value}>{i.name}</SelectItem>;
+                return <SelectItem value={i.name}>{i.name}</SelectItem>;
               })}
             </Select.Group>
           </Select.Viewport>

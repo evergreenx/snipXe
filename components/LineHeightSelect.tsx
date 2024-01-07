@@ -52,7 +52,7 @@ const LineHeightSelect = () => {
       placeholder: 45,
     },
     {
-      value: "50%",
+      value: "55%",
       placeholder: 55,
     },
 
@@ -86,6 +86,7 @@ const LineHeightSelect = () => {
 
   const selectedLineHeight = useSelector((state: RootState) => state.control.lineH);
 
+  console.log(selectedLineHeight)
   const handleSelectedHPadding = (value: string) => {
     dispatch(handleLineHeightUpdate(value));
     setValue(value);

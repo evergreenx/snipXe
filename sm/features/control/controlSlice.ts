@@ -39,7 +39,7 @@ const initialState: controlSliceState = {
     v: "55",
     h: "55",
   },
-  font: "",
+  font: "Rubik",
   lineH: "150%",
   os: {
     type: "mx",

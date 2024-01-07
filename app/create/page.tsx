@@ -34,12 +34,8 @@ import { RootState } from "@/sm/store";
 import { handleSetRef } from "@/sm/features/control/downloadSlice";
 import { handleValueUpdate } from "@/sm/features/control/controlSlice";
 
-
-
-
-
-import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
+import SimpleBar from "simplebar-react";
+import "simplebar-react/dist/simplebar.min.css";
 
 const sourcePro = Source_Code_Pro({ subsets: ["latin"], display: "swap" });
 
@@ -70,25 +66,78 @@ export default function page() {
 
   const selectedFont = useSelector((state: RootState) => state.control.font);
 
+  console.log(selectedFont);
+  let font;
+
+  switch (selectedFont) {
+    case "Poppins":
+      font = poppins.style.fontFamily;
+
+      break;
+    case "Roboto":
+      font = roboto.style.fontFamily;
+
+      break;
+
+    case "Rubik":
+      font = rubik.style.fontFamily;
+
+      break;
+
+    case "Raleway":
+      font = raleway.style.fontFamily;
+
+      break;
+
+    case "Ubuntu":
+      font = ubuntu.style.fontFamily;
+
+      break;
+
+    case "Nunito":
+      font = nunito.style.fontFamily;
+
+      break;
+
+    case "Fira Sans":
+      font = firasans.style.fontFamily;
+
+      break;
+
+    case "Source Code Pro":
+      font = sourcePro.style.fontFamily;
+
+      break;
+
+    case "Roboto":
+      font = roboto.style.fontFamily;
+
+      break;
+    // Add other cases for different language modes as needed
+
+    default:
+      // Default to JavaScript if language mode is not recognized
+      font = sourcePro.style.fontFamily;
+
+      break;
+  }
+
   const FontSizeTheme = EditorView.theme({
     "&": {
       fontSize: "13.5px",
+
       // boxShadow : {
       //   ds && '0 20px 68px rgba(0, 0, 0, 0.55)'
       // }
     },
-    ".cm-content": {
-
-
-    },
+    ".cm-content": {},
     ".cm-gutters": {
       // minHeight: "200px",
     },
     ".cm-scroller": {
       overflow: "auto",
 
-
-      fontFamily: selectedFont,
+      fontFamily: font,
 
       lineHeight: selectedLineHeight,
     },
@@ -169,18 +218,6 @@ export default function page() {
     }
   }, [editor.current, languageMode, selectedTheme, selectedFont]);
 
-  useEffect(() => {
-    const scrollerElement = document.querySelector<HTMLElement>(
-      ".cm-editor .cm-scroller"
-    );
-
-    // console.log(scrollerElement, "dd");
-
-    if (scrollerElement) {
-      scrollerElement.style.fontFamily = `${selectedFont}`; // Update the font family
-    }
-  }, [editor.current, selectedFont]);
-
   // console.log(selectedFont);
   const preRef = useRef(null);
 
@@ -205,8 +242,7 @@ export default function page() {
 
   const ds = useSelector((state: RootState) => state.control.ds);
 
-  console.log(ds)
-
+  console.log(ds);
 
   return (
     <div className="  h-screen flex justify-center items-center   p-3 ">
@@ -221,8 +257,6 @@ export default function page() {
           }}
           className={` w-full mx-auto my-0    `}
         >
-
-
           {/* code mirror */}
           <div className="relative mx-auto max-w-[100%] ">
             {/* OS */}
@@ -337,8 +371,8 @@ export default function page() {
             <CodeMirror
               value={value}
               style={{
-                boxShadow: ds ? '0 20px 68px rgba(0, 0, 0, 0.55)' : 'none',
-                borderRadius: '200px'
+                boxShadow: ds ? "0 20px 68px rgba(0, 0, 0, 0.55)" : "none",
+                borderRadius: "200px",
               }}
               extensions={extensions}
               theme={theme}

@@ -47,7 +47,7 @@ const VPaddingSelect = () => {
       placeholder: 45,
     },
     {
-      value: "50",
+      value: "55",
       placeholder: 55,
     },
   ];
@@ -58,6 +58,8 @@ const VPaddingSelect = () => {
     dispatch(handleVPaddingUpdate(value));
     setValue(value);
   };
+
+  console.log(selectedVPadding)
 
   const [value, setValue] = React.useState(selectedVPadding.v);
   return (

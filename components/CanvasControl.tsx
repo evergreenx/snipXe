@@ -94,7 +94,7 @@ function CanvasControl() {
                     placeholder="snipx name"
                     onChange={(e) => dispatch(handleNameUpdate(e.target.value))}
                     defaultValue={editorState.name}
-                    className=" text-[#DDE1E1] w-[80%]  border-b font-semibold text-base bg-transparent outline-none border-b-white"
+                    className=" text-[#DDE1E1] w-[80%] py-2  border-b font-semibold text-base bg-transparent outline-none border-b-white"
                   />
 
                   <svg

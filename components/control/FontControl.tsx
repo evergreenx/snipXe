@@ -16,11 +16,11 @@ export default function FontControl() {
     },
     {
       name: "Raleway",
-      value: "'__Raleway_c3f4a3', '__Raleway_Fallback_c3f4a3'",
+      value: "__Raleway_c3f4a3, __Raleway_Fallback_c3f4a3",
     },
     {
       name: "Roboto",
-      value: "'__Roboto_a789c4', '__Roboto_Fallback_a789c4'",
+      value: "__Roboto_a789c4, __Roboto_Fallback_a789c4",
     },
 
     {

@@ -51,7 +51,7 @@ const HPaddingSelect = () => {
       placeholder: 45,
     },
     {
-      value: "50",
+      value: "55",
       placeholder: 55,
     },
   ];
