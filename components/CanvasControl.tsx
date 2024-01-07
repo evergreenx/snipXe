@@ -15,8 +15,6 @@ import { useOnClickOutside } from "usehooks-ts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import { handleNameUpdate } from "@/sm/features/control/controlSlice";
-import SimpleBar from "simplebar-react";
-import "simplebar-react/dist/simplebar.min.css";
 
 import {
   Drawer,
@@ -27,7 +25,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/components/ui/drawer"
 
 function CanvasControl() {
   const [value, toggle, setValue] = useToggle(false);
@@ -46,108 +44,105 @@ function CanvasControl() {
 
   useOnClickOutside(ref, handleClickOutside);
   return (
-    <>
+<>
       <AnimatePresence>
         {value && (
-          <SimpleBar
-            style={{ maxHeight: 300 }}
-            className=""
-            forceVisible="x"
-            autoHide={false}
+          <>
+    <div
+        onClick={() => {
+          setValue((x) => !x);
+        }}
+        className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"
+      ></div>
+
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`w-[323px] z-[99] fixed lg:fixed lg:top-[121px] top-[91px] mb-[100px] pb-[200px]   right-0  overflow-y-scroll bg-primary h-screen text-white `}
           >
+
             <div
+              className="toogle w-[10px] cursor-pointer mt-[24px] px-[28px]"
               onClick={() => {
                 setValue((x) => !x);
               }}
-              className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"
-            ></div>
-
-            <motion.aside
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={`w-[323px] z-[99]   overflow-y-scroll h-screen  lg:fixed lg:top-[121px] top-[91px]  mb-[100px] pb-[200px]   right-0   bg-primary text-white `}
             >
-              <div
-                className="toogle w-[10px] cursor-pointer mt-[24px] px-[28px]"
-                onClick={() => {
-                  setValue((x) => !x);
-                }}
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.5 15L12.5 10L7.5 5"
-                    stroke="#DDE1E1"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <path
+                  d="M7.5 15L12.5 10L7.5 5"
+                  stroke="#DDE1E1"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+
+            <div className="control">
+              <div className="p-[28px]">
+                <div className="name mb-[20px]  flex space-x-[8px]">
+                  <input
+                    type="text"
+                    placeholder="snipx name"
+                    onChange={(e) => dispatch(handleNameUpdate(e.target.value))}
+                    defaultValue={editorState.name}
+                    className=" text-[#DDE1E1] w-[80%]  border-b font-semibold text-base bg-transparent outline-none border-b-white"
                   />
-                </svg>
-              </div>
 
-              <div className="control">
-                <div className="p-[28px]">
-                  <div className="name mb-[20px]  flex space-x-[8px]">
-                    <input
-                      type="text"
-                      placeholder="snipx name"
-                      onChange={(e) =>
-                        dispatch(handleNameUpdate(e.target.value))
-                      }
-                      defaultValue={editorState.name}
-                      className=" text-[#DDE1E1] w-[80%]  border-b font-semibold text-base bg-transparent outline-none border-b-white"
+                  <svg
+                    className="cursor-pointer"
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 8.83332L11.6667 5.49999M2.08331 18.4167L4.90362 18.1033C5.24819 18.065 5.42048 18.0459 5.58152 17.9937C5.72439 17.9475 5.86035 17.8821 5.98572 17.7995C6.12702 17.7063 6.2496 17.5837 6.49475 17.3386L17.5 6.33332C18.4205 5.41285 18.4205 3.92046 17.5 2.99999C16.5795 2.07951 15.0871 2.07951 14.1667 2.99999L3.16142 14.0052C2.91627 14.2504 2.79369 14.3729 2.70051 14.5142C2.61784 14.6396 2.55249 14.7756 2.50624 14.9185C2.45411 15.0795 2.43497 15.2518 2.39668 15.5964L2.08331 18.4167Z"
+                      stroke="#7789A9"
+                      strokeWidth="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
-
-                    <svg
-                      className="cursor-pointer"
-                      width="20"
-                      height="21"
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M15 8.83332L11.6667 5.49999M2.08331 18.4167L4.90362 18.1033C5.24819 18.065 5.42048 18.0459 5.58152 17.9937C5.72439 17.9475 5.86035 17.8821 5.98572 17.7995C6.12702 17.7063 6.2496 17.5837 6.49475 17.3386L17.5 6.33332C18.4205 5.41285 18.4205 3.92046 17.5 2.99999C16.5795 2.07951 15.0871 2.07951 14.1667 2.99999L3.16142 14.0052C2.91627 14.2504 2.79369 14.3729 2.70051 14.5142C2.61784 14.6396 2.55249 14.7756 2.50624 14.9185C2.45411 15.0795 2.43497 15.2518 2.39668 15.5964L2.08331 18.4167Z"
-                        stroke="#7789A9"
-                        strokeWidth="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  <BGControl />
+                  </svg>
                 </div>
 
-                <ThemeControl />
-
-                <LanguageControl />
-
-                <PaddingControl />
-
-                <FontControl />
+                <BGControl />
               </div>
-            </motion.aside>
-          </SimpleBar>
+
+              <ThemeControl />
+
+              <LanguageControl />
+
+              <PaddingControl />
+
+              <FontControl />
+            </div>
+          </motion.aside>
+
+          </>
         )}
       </AnimatePresence>
 
       {!value && (
-        <div
-          onClick={() => {
-            setValue((x: boolean) => !x);
-          }}
-          className="bg-primary cursor-pointer w-[76px] right-0 flex justify-center fixed top-[120px] h-[68px] pt-[24px]"
-        >
+        <div 
+        onClick={() => {
+          setValue((x: boolean) => !x);
+        }}
+        className="bg-primary cursor-pointer w-[76px] right-0 flex justify-center fixed top-[120px] h-[68px] pt-[24px]">
           {" "}
-          <div className="toogle ">
+          <div
+            className="toogle "
+           
+          >
             {" "}
             <svg
               width="20"
