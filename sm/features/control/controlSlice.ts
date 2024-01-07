@@ -8,6 +8,7 @@ export interface controlSliceState {
   theme: string;
   mode: string;
   bg: string;
+  ds: boolean;
   p: {
     v: string;
     h: string;
@@ -32,6 +33,8 @@ const initialState: controlSliceState = {
   bg: "#cacad7",
   value: `console.log('test mode')`,
   name: "untitled snipx",
+
+  ds: true,
   p: {
     v: "55",
     h: "55",
@@ -97,6 +100,10 @@ export const controlSlice = createSlice({
     handleNameUpdate: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
+
+    handleDropShadowUpdate: (state, action: PayloadAction<boolean>) => {
+      state.ds = action.payload;
+    },
   },
 });
 
@@ -113,6 +120,7 @@ export const {
   handleOSUpdate,
   handleValueUpdate,
   handleOSActiveUpdate,
+  handleDropShadowUpdate
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

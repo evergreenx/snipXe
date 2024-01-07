@@ -34,7 +34,12 @@ import { RootState } from "@/sm/store";
 import { handleSetRef } from "@/sm/features/control/downloadSlice";
 import { handleValueUpdate } from "@/sm/features/control/controlSlice";
 
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+
+
+
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 const sourcePro = Source_Code_Pro({ subsets: ["latin"], display: "swap" });
 
@@ -68,6 +73,9 @@ export default function page() {
   const FontSizeTheme = EditorView.theme({
     "&": {
       fontSize: "13.5px",
+      // boxShadow : {
+      //   ds && '0 20px 68px rgba(0, 0, 0, 0.55)'
+      // }
     },
     ".cm-content": {
 
@@ -195,6 +203,11 @@ export default function page() {
     }
   }, [codeRef]);
 
+  const ds = useSelector((state: RootState) => state.control.ds);
+
+  console.log(ds)
+
+
   return (
     <div className="  h-screen flex justify-center items-center   p-3 ">
       <>
@@ -208,6 +221,8 @@ export default function page() {
           }}
           className={` w-full mx-auto my-0    `}
         >
+
+
           {/* code mirror */}
           <div className="relative mx-auto max-w-[100%] ">
             {/* OS */}
@@ -321,6 +336,9 @@ export default function page() {
 
             <CodeMirror
               value={value}
+              style={{
+                boxShadow: ds ? '0 20px 68px rgba(0, 0, 0, 0.55)' : 'none'
+              }}
               extensions={extensions}
               theme={theme}
               onChange={(value, viewUpdate) => {

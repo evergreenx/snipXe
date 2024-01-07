@@ -26,9 +26,30 @@ export default function HeaderClient({ session }: { session: Session | null }) {
 
   const handleDownloadClick = () => {
     if (coderefstate) {
-      htmlToImage.toPng(coderefstate, {}).then((canvas) => {
-        download(canvas, snipxName);
+      const elementToCapture = coderefstate;
+
+      const clone = elementToCapture.cloneNode(true);
+      clone.style.position = 'absolute';
+      clone.style.top = '0';
+      clone.style.transition = 'transform 0.5s ease-in-out';
+      clone.style.zIndex = '9999';
+
+      document.body.appendChild(clone);
+
+      requestAnimationFrame(() => {
+        clone.style.transform = 'scale(0)';
       });
+
+      setTimeout(() => {
+        htmlToImage.toPng(coderefstate, {}).then((dataUrl) => {
+          document.body.removeChild(clone);
+
+          const link = document.createElement('a');
+          link.href = dataUrl;
+          link.download = snipxName;
+          link.click();
+        });
+      }, 500); // Adjust the delay to match your animation duration
     }
   };
 

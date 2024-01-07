@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/sm/store";
 import {
   controlSliceState,
+  handleDropShadowUpdate,
   handleOSActiveUpdate,
   handleOSUpdate,
 } from "@/sm/features/control/controlSlice";
@@ -55,18 +56,21 @@ export default function ThemeControl() {
 
   const osActive = useSelector((state: RootState) => state.control.os.active);
 
+  const ds = useSelector((state: RootState) => state.control.ds);
+
   const dispatch = useDispatch();
 
   const handleChangeOS = (os: controlSliceState["os"]["type"]) => {
-
-    if (osActive)
-    dispatch(handleOSUpdate(os));
+    if (osActive) dispatch(handleOSUpdate(os));
   };
 
   const handleChangeOSActive = (os: controlSliceState["os"]["active"]) => {
     dispatch(handleOSActiveUpdate(os));
   };
 
+  const handleChangeDS = (bool: controlSliceState["ds"]) => {
+    dispatch(handleDropShadowUpdate(bool));
+  };
 
   return (
     <div className="border-b-[0.5px] border-t-[0.5px]  border-[#414D77]">
@@ -76,6 +80,15 @@ export default function ThemeControl() {
         </h2>
 
         <ThemeSelect data={themes} />
+
+        <div className="shadow flex justify-between mt-[20px] items-center">
+          <p className="text-base font-semibold">Apply drop Shadow</p>
+
+          <Switch
+            onCheckedChange={() => handleChangeDS(!ds)}
+            defaultChecked={ds}
+          />
+        </div>
 
         <div className="os flex space-x-[13px] items-center mt-[20px] ">
           <p className="text-sm flex space-x-[10px] items-center">
@@ -178,7 +191,9 @@ export default function ThemeControl() {
               className={`p-2 rounded cursor-pointer w-[60px]
             
             
-            ${os.type === "mx" && osActive && "border-[0.5px] border-[#DDE1E1] "}
+            ${
+              os.type === "mx" && osActive && "border-[0.5px] border-[#DDE1E1] "
+            }
             
             `}
             >
