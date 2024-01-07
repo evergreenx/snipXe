@@ -43,7 +43,7 @@ const initialState: controlSliceState = {
   lineH: "150%",
   os: {
     type: "mx",
-    active: false,
+    active: true,
   },
 };
 
