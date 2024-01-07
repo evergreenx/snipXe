@@ -337,7 +337,8 @@ export default function page() {
             <CodeMirror
               value={value}
               style={{
-                boxShadow: ds ? '0 20px 68px rgba(0, 0, 0, 0.55)' : 'none'
+                boxShadow: ds ? '0 20px 68px rgba(0, 0, 0, 0.55)' : 'none',
+                borderRadius: '200px'
               }}
               extensions={extensions}
               theme={theme}
