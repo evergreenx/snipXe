@@ -69,6 +69,7 @@ export default function page() {
   console.log(selectedFont);
   let font;
 
+  // font family switch
   switch (selectedFont) {
     case "Poppins":
       font = poppins.style.fontFamily;
@@ -122,11 +123,14 @@ export default function page() {
       break;
   }
 
+  const ds = useSelector((state: RootState) => state.control.ds);
+
+
   const FontSizeTheme = EditorView.theme({
     "&": {
       fontSize: "13.5px",
 
-      boxShadow: "0 20px 68px rgba(0, 0, 0, 0.55)",
+      boxShadow: ds ? "0 20px 68px rgba(0, 0, 0, 0.55)": '',
     },
     ".cm-content": {},
     ".cm-gutters": {
@@ -143,6 +147,7 @@ export default function page() {
 
   let extensions: Extension[] | undefined = [];
 
+  // language switch
   switch (languageMode) {
     case "javascript":
       extensions = [javascript(), EditorView.lineWrapping, FontSizeTheme];
@@ -238,7 +243,6 @@ export default function page() {
     }
   }, [codeRef]);
 
-  const ds = useSelector((state: RootState) => state.control.ds);
 
   console.log(ds);
 
