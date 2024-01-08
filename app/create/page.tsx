@@ -67,8 +67,6 @@ export default function page() {
   );
 
   const selectedFont = useSelector((state: RootState) => state.control.font);
-
-  console.log(selectedFont);
   let font;
 
   // font family switch
@@ -251,10 +249,10 @@ export default function page() {
     }
   }, [codeRef]);
 
-  console.log(ds);
+
 
   return (
-    <div className="  h-screen flex justify-center items-center   p-3 ">
+    <div className=" min-w-[90px]  max-w-[889px] mx-auto  h-screen flex justify-center items-center   p-3 ">
       <>
         <div
           ref={codeRef}

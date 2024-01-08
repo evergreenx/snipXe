@@ -90,7 +90,7 @@ export default function Login({
             Log in with GitHub
           </p>
         </button>
-
+{/* 
         <div
           className="gg
           lg:w-[320px]
@@ -171,7 +171,7 @@ export default function Login({
           <p className="text-base text-primary font-medium">
             Log in with Microsoft
           </p>
-        </div>
+        </div> */}
 
         {searchParams?.message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
