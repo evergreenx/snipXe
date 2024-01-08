@@ -14,6 +14,7 @@ export interface controlSliceState {
     h: string;
   };
   font: string;
+  fs : string;
   lineH: string;
   os: {
     type: "w" | "m" | "mx";
@@ -40,6 +41,7 @@ const initialState: controlSliceState = {
     h: "55",
   },
   font: "Rubik",
+  fs : '12',
   lineH: "150%",
   os: {
     type: "mx",
@@ -80,6 +82,9 @@ export const controlSlice = createSlice({
       state.font = action.payload;
     },
 
+    handleFontSizeUpdate: (state, action: PayloadAction<string>) => {
+      state.fs = action.payload;
+    },
     handleLineHeightUpdate: (state, action: PayloadAction<string>) => {
       state.lineH = action.payload;
     },
@@ -120,7 +125,8 @@ export const {
   handleOSUpdate,
   handleValueUpdate,
   handleOSActiveUpdate,
-  handleDropShadowUpdate
+  handleDropShadowUpdate,
+  handleFontSizeUpdate
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

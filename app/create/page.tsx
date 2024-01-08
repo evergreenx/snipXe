@@ -82,10 +82,10 @@ export default function page() {
 
       break;
 
-      case "Alata":
-        font = alata.style.fontFamily;
-  
-        break;
+    case "Alata":
+      font = alata.style.fontFamily;
+
+      break;
 
     case "Rubik":
       font = rubik.style.fontFamily;
@@ -131,10 +131,12 @@ export default function page() {
   }
 
   const ds = useSelector((state: RootState) => state.control.ds);
+  const selectedFontSize = useSelector((state: RootState) => state.control.fs);
 
   const FontSizeTheme = EditorView.theme({
     "&": {
-      fontSize: "13.5px",
+      fontSize: `${selectedFontSize}px`,
+      fontFamily: font,
 
       boxShadow: ds ? "0 20px 68px rgba(0, 0, 0, 0.55)" : "",
     },
@@ -225,7 +227,7 @@ export default function page() {
     if (editor.current) {
       setContainer(editor.current);
     }
-  }, [editor.current, languageMode, selectedTheme, selectedFont]);
+  }, [editor.current, languageMode, selectedTheme, selectedFont , selectedFontSize]);
 
   // console.log(selectedFont);
   const preRef = useRef(null);
