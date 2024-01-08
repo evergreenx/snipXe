@@ -38,7 +38,7 @@ const initialState: controlSliceState = {
   ds: true,
   p: {
     v: "55",
-    h: "55",
+    h: "25",
   },
   font: "Rubik",
   fs : '12',
