@@ -44,10 +44,12 @@ export default function HeaderClient({ session }: { session: Session | null }) {
         htmlToImage.toPng(coderefstate, {}).then((dataUrl) => {
           document.body.removeChild(clone);
 
-          const link = document.createElement('a');
-          link.href = dataUrl;
-          link.download = snipxName;
-          link.click();
+          download(dataUrl , snipxName)
+
+          // const link = document.createElement('a');
+          // link.href = dataUrl;
+          // link.download = snipxName;
+          // link.click();
         });
       }, 500); // Adjust the delay to match your animation duration
     }
