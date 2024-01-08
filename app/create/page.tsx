@@ -27,6 +27,7 @@ import {
   Nunito,
   Roboto,
   Raleway,
+  Alata,
 } from "next/font/google";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +47,7 @@ const raleway = Raleway({ subsets: ["latin"], display: "swap", weight: "400" });
 const roboto = Roboto({ subsets: ["latin"], display: "swap", weight: "400" });
 
 const poppins = Poppins({ subsets: ["latin"], display: "swap", weight: "400" });
+const alata = Alata({ subsets: ["latin"], display: "swap", weight: "400" });
 
 const firasans = Fira_Sans({
   subsets: ["latin"],
@@ -79,6 +81,11 @@ export default function page() {
       font = roboto.style.fontFamily;
 
       break;
+
+      case "Alata":
+        font = alata.style.fontFamily;
+  
+        break;
 
     case "Rubik":
       font = rubik.style.fontFamily;
@@ -125,12 +132,11 @@ export default function page() {
 
   const ds = useSelector((state: RootState) => state.control.ds);
 
-
   const FontSizeTheme = EditorView.theme({
     "&": {
       fontSize: "13.5px",
 
-      boxShadow: ds ? "0 20px 68px rgba(0, 0, 0, 0.55)": '',
+      boxShadow: ds ? "0 20px 68px rgba(0, 0, 0, 0.55)" : "",
     },
     ".cm-content": {},
     ".cm-gutters": {
@@ -242,7 +248,6 @@ export default function page() {
       dispatch(handleSetRef(codeRef.current));
     }
   }, [codeRef]);
-
 
   console.log(ds);
 

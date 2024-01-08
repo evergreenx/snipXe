@@ -14,6 +14,11 @@ export default function FontControl() {
       name: "Nunito",
       value: "'__Nunito_1c0e92', '__Nunito_Fallback_1c0e92'",
     },
+
+    {
+      name: "Alata",
+      value: "'__Nunito_1c0e92', '__Nunito_Fallback_1c0e92'",
+    },
     {
       name: "Raleway",
       value: "__Raleway_c3f4a3, __Raleway_Fallback_c3f4a3",

@@ -24,8 +24,10 @@ export default function HeaderClient({ session }: { session: Session | null }) {
 
   const router = useRouter();
 
-  const handleDownloadClick = () => {
+  const handleDownloadClick  = async () => {
     if (coderefstate) {
+
+      const fontEmbedCSS = await htmlToImage.getFontEmbedCSS(coderefstate);
       const elementToCapture = coderefstate;
 
       const clone = elementToCapture.cloneNode(true);
@@ -41,7 +43,9 @@ export default function HeaderClient({ session }: { session: Session | null }) {
       });
 
       setTimeout(() => {
-        htmlToImage.toPng(coderefstate, {}).then((dataUrl) => {
+
+        
+        htmlToImage.toPng(coderefstate, {fontEmbedCSS }).then((dataUrl) => {
           document.body.removeChild(clone);
 
           download(dataUrl , snipxName)
