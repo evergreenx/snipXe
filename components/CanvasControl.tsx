@@ -88,7 +88,7 @@ function CanvasControl() {
 
             <div className="control">
               <div className="p-[28px]">
-                <div className="name mb-[20px]  flex space-x-[8px]">
+                <div className="name mb-[20px] items-center  flex space-x-[8px]">
                   <input
                     type="text"
                     placeholder="snipx name"
