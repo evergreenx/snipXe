@@ -46,9 +46,6 @@ export default function BGImage() {
     headers: {
       "Accept-Language": "en-US",
       Accept: "application/json",
-      Authorization: "MVMKcgv8uACEYG2A5YvOx6G8cLMWb6PCs8snILpyM3Q",
-      // "Content-Type": "application/json",
-      // "X-Freepik-API-Key": "00000000-0000-0000-0000-000000000000",
     },
   };
 
@@ -56,9 +53,9 @@ export default function BGImage() {
 
   useEffect(() => {
     const fetchUser = () => {
+      setIsLoading(true);
       axios(config)
         .then(function (response) {
-          console.log(JSON.stringify(response.data));
           setImages(response.data.results);
           setIsLoading(false); // Set isLoading to false when data is fetched
         })
@@ -147,11 +144,9 @@ export default function BGImage() {
           </div>
 
           <div className="images grid gap-2 grid-cols-3 mt-[16px] items-center place-content-center mx-auto justify-center">
-
-
-
-{isLoading && 'loading'}
-
+            {isLoading && (
+              <p className="text-primary text-sm text-center"> loading </p>
+            )}
 
             {images &&
               images.map((i) => {

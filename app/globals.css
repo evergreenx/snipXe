@@ -78,7 +78,6 @@ html {
 }
 
 .cm-editor .cm-scroller {
-  padding-top: 1rem;
   display: none;
   overflow: hidden !important;
 

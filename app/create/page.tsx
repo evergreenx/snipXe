@@ -129,6 +129,8 @@ export default function page() {
   }
 
   const ds = useSelector((state: RootState) => state.control.ds);
+  const osActive = useSelector((state: RootState) => state.control.os.active);
+
   const selectedFontSize = useSelector((state: RootState) => state.control.fs);
 
   const FontSizeTheme = EditorView.theme({
@@ -148,6 +150,7 @@ export default function page() {
       fontFamily: font,
 
       lineHeight: selectedLineHeight,
+      paddingTop: osActive ? '16px' : ''
     },
   });
 
@@ -225,14 +228,19 @@ export default function page() {
     if (editor.current) {
       setContainer(editor.current);
     }
-  }, [editor.current, languageMode, selectedTheme, selectedFont , selectedFontSize]);
+  }, [
+    editor.current,
+    languageMode,
+    selectedTheme,
+    selectedFont,
+    selectedFontSize,
+  ]);
 
   // console.log(selectedFont);
   const preRef = useRef(null);
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
-  const osActive = useSelector((state: RootState) => state.control.os.active);
 
   const coderefstate = useSelector((state: RootState) => state.download.ref);
   // const codeRef = useRef<null | (() => void)>(coderefstate);
@@ -248,8 +256,6 @@ export default function page() {
       dispatch(handleSetRef(codeRef.current));
     }
   }, [codeRef]);
-
-
 
   return (
     <div className=" min-w-[90px]  max-w-[889px] mx-auto  h-screen flex justify-center items-center   p-3 ">
@@ -378,7 +384,6 @@ export default function page() {
             <CodeMirror
               value={value}
               style={{
-                // boxShadow: ds ? "0 20px 68px rgba(0, 0, 0, 0.55)" : "none",
                 borderRadius: "200px",
               }}
               extensions={extensions}
