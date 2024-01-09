@@ -17,8 +17,6 @@ export default function BGControl() {
   const ref = useRef(null);
   const dispatch = useDispatch();
 
-  const [color, setColor] = useState("rgba(255,255,255,1)");
-
   const handleClickOutside = () => {
     setValue(false);
   };
@@ -27,8 +25,6 @@ export default function BGControl() {
 
   const handleChangeBgColor = (color: string) => {
     dispatch(handleBgUpdate(color));
-
-    // console.log(color)
   };
 
   const colorBG = useSelector((state: RootState) => state.control.bg);
@@ -45,23 +41,25 @@ export default function BGControl() {
             setValue((x) => !x);
           }}
           style={{
-            background: colorBG,
+            background: colorBG.c,
           }}
           className={` w-[28px] h-[28px] cursor-pointer`}
         ></div>
       </div>
 
       <div className="bgbg">
-    
-    <BGImage />
+        <BGImage />
       </div>
 
       {value ? (
-        <div ref={ref} className="bg-white  rounded-md absolute top-32 left-0 z-50">
+        <div
+          ref={ref}
+          className="bg-white  rounded-md absolute top-32 left-0 z-50"
+        >
           <ColorPicker
             showAlpha={false}
             gradient
-            value={colorBG}
+            value={colorBG.c}
             onChange={handleChangeBgColor}
           />
         </div>

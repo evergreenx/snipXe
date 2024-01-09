@@ -3,6 +3,9 @@ import { useToggle, useOnClickOutside } from "usehooks-ts";
 import bg from "../../assets/bg.jpg";
 import axios from "axios";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { handleBgImageUpdate } from "@/sm/features/control/controlSlice";
+import { RootState } from "@/sm/store";
 export default function BGImage() {
   const [value, toggle, setValue] = useToggle();
 
@@ -21,9 +24,12 @@ export default function BGImage() {
     //ts-ignore
     const file: File | null = e.target.files && e.target.files[0];
 
-    if (file) setBGImage(file.name);
+    if (file) {
+      const url = URL.createObjectURL(file);
 
-    console.log(file);
+      handleImageBG(url);
+      setBGImage(url);
+    }
   };
 
   const handleButtonClick = () => {
@@ -62,38 +68,63 @@ export default function BGImage() {
     fetchUser();
   }, []);
 
-  console.log(images);
+  const dispatch = useDispatch();
+
+  const handleImageBG = (url: string) => {
+    dispatch(handleBgImageUpdate(url));
+  };
+
+  const bgImageUrl = useSelector((state: RootState) => state.control.bg.i);
+
   return (
     <div>
-      <svg
-        onClick={toggle}
-        className="cursor-pointer "
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-      >
-        <rect x="0.5" y="0.5" width="27" height="27" fill="url(#pattern0)" />
-        <rect x="0.5" y="0.5" width="27" height="27" stroke="#DDE1E1" />
-        <defs>
-          <pattern
-            id="pattern0"
-            patternContentUnits="objectBoundingBox"
-            width="1"
-            height="1"
-          >
-            <use xlinkHref="#image0_311_514" transform="scale(0.015625)" />
-          </pattern>
-          <image
-            id="image0_311_514"
-            width="64"
-            height="64"
-            xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAONJREFUeF7t20EOhEAIRFG4/6F7DvEnYeFzryQIv6pBd2behOu9dPvsbog+k+NLgArQAqmJcw9iAAhSgZKB3IJkkAySQTJ4CiE+gA8oBeg0mH3Ai084P89HhqwEqIA209ICsQdjAeaZIgaAYKxBDMCAYy8fXwAIgiAIcoJpJEYGI4VjB3YrbC9gL2AvkCB43cM5PgZgAAZgQFnNZAhdGykQBEEQBEEQDBmgAm2glM/z+QUYisYUGoldO7kY32IEAzCg6RgIRgjFAsw+AgRBMNYgBmCAT2TCYfoPPz/HCqQCX1eBHzHnv7C7WhBSAAAAAElFTkSuQmCC"
+      <div className="" onClick={toggle}>
+        {bgImageUrl ? (
+          <Image
+            alt="txt"
+            className="w-[28px] h-[28px] cursor-pointer"
+            src={bgImageUrl}
+            width={40}
+            height={40}
           />
-        </defs>
-      </svg>
+        ) : (
+          <svg
+            className="cursor-pointer "
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+          >
+            <rect
+              x="0.5"
+              y="0.5"
+              width="27"
+              height="27"
+              fill="url(#pattern0)"
+            />
+            <rect x="0.5" y="0.5" width="27" height="27" stroke="#DDE1E1" />
+            <defs>
+              <pattern
+                id="pattern0"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use xlinkHref="#image0_311_514" transform="scale(0.015625)" />
+              </pattern>
+              <image
+                id="image0_311_514"
+                width="64"
+                height="64"
+                xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAONJREFUeF7t20EOhEAIRFG4/6F7DvEnYeFzryQIv6pBd2behOu9dPvsbog+k+NLgArQAqmJcw9iAAhSgZKB3IJkkAySQTJ4CiE+gA8oBeg0mH3Ai084P89HhqwEqIA209ICsQdjAeaZIgaAYKxBDMCAYy8fXwAIgiAIcoJpJEYGI4VjB3YrbC9gL2AvkCB43cM5PgZgAAZgQFnNZAhdGykQBEEQBEEQDBmgAm2glM/z+QUYisYUGoldO7kY32IEAzCg6RgIRgjFAsw+AgRBMNYgBmCAT2TCYfoPPz/HCqQCX1eBHzHnv7C7WhBSAAAAAElFTkSuQmCC"
+              />
+            </defs>
+          </svg>
+        )}
+      </div>
+
       {value && (
         <div
           className="w-[201px] rounded-[16px] bg-white h-[320px] absolute z-50 p-2  overflow-hidden  "
@@ -102,9 +133,10 @@ export default function BGImage() {
           <div
             onClick={handleButtonClick}
             style={{
-              backgroundImage: `url(${bgImage})`,
+              backgroundImage: `url(${bgImageUrl})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
             }}
             className=" px-[13px] bg-blue-300 w-full pt-[28px] pb-[20px] flex items-center flex-col rounded-lg"
           >
@@ -144,14 +176,17 @@ export default function BGImage() {
             )}
 
             {images &&
-              images.map((i) => {
+              images.map((image) => {
                 return (
-                  <div className="flex items-center  mx-auto cursor-pointer">
+                  <div
+                    onClick={() => handleImageBG(image.urls?.regular)}
+                    className="flex items-center  mx-auto cursor-pointer"
+                  >
                     <Image
                       width={40}
                       height={40}
                       alt="image"
-                      src={i?.urls?.small}
+                      src={image.urls?.small}
                     />
                   </div>
                 );

@@ -7,14 +7,17 @@ export interface controlSliceState {
   name: string;
   theme: string;
   mode: string;
-  bg: string;
+  bg: {
+    c: string;
+    i: string;
+  };
   ds: boolean;
   p: {
     v: string;
     h: string;
   };
   font: string;
-  fs : string;
+  fs: string;
   lineH: string;
   os: {
     type: "w" | "m" | "mx";
@@ -31,7 +34,10 @@ const defaultColorResult: ColorResult = {
 const initialState: controlSliceState = {
   mode: "javascript",
   theme: "dracula",
-  bg: "#cacad7",
+  bg: {
+    c: "#ddd",
+    i: "",
+  },
   value: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 
   const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
@@ -51,7 +57,7 @@ const initialState: controlSliceState = {
     h: "25",
   },
   font: "Rubik",
-  fs : '12',
+  fs: "12",
   lineH: "150%",
   os: {
     type: "mx",
@@ -65,7 +71,13 @@ export const controlSlice = createSlice({
   reducers: {
     handleBgUpdate: (state, action: PayloadAction<string>) => {
       if (state.bg) {
-        state.bg = action.payload as string;
+        state.bg.c = action.payload as string;
+      }
+    },
+
+    handleBgImageUpdate: (state, action: PayloadAction<string>) => {
+      if (state.bg) {
+        state.bg.i = action.payload as string;
       }
     },
 
@@ -136,7 +148,8 @@ export const {
   handleValueUpdate,
   handleOSActiveUpdate,
   handleDropShadowUpdate,
-  handleFontSizeUpdate
+  handleFontSizeUpdate,
+  handleBgImageUpdate
 } = controlSlice.actions;
 
 export default controlSlice.reducer;

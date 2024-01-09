@@ -150,7 +150,7 @@ export default function page() {
       fontFamily: font,
 
       lineHeight: selectedLineHeight,
-      paddingTop: osActive ? '16px' : ''
+      paddingTop: osActive ? "16px" : "",
     },
   });
 
@@ -204,6 +204,8 @@ export default function page() {
 
   const Padding = useSelector((state: RootState) => state.control.p);
 
+  const bgImage = useSelector((state: RootState) => state.control.bg.i);
+
   const value = useSelector((state: RootState) => state.control.value);
 
   const { setContainer, state, setView, setState } = useCodeMirror({
@@ -241,7 +243,6 @@ export default function page() {
 
   const BG = useSelector((state: RootState) => state.control.bg);
 
-
   const coderefstate = useSelector((state: RootState) => state.download.ref);
   // const codeRef = useRef<null | (() => void)>(coderefstate);
 
@@ -263,7 +264,10 @@ export default function page() {
         <div
           ref={codeRef}
           style={{
-            background: BG,
+            background: BG.c,
+            backgroundImage: `url(${bgImage})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize : 'cover',
             padding: `${Padding.v}px ${Padding.h}px`,
           }}
           className={` w-full mx-auto my-0    `}
