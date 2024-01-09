@@ -265,8 +265,6 @@ export default function page() {
           style={{
             background: BG,
             padding: `${Padding.v}px ${Padding.h}px`,
-
-            // minHeight: "90px",
           }}
           className={` w-full mx-auto my-0    `}
         >

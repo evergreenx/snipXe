@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lora&family=Nunito&family=Poppins&family=Raleway&family=Roboto&family=Source+Code+Pro&family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lora&family=Nunito&family=Poppins&family=Raleway&family=Roboto&family=Source+Code+Pro&family=Ubuntu&display=swap");
 @layer base {
   :root {
     --background: 200 20% 98%;
@@ -32,7 +32,6 @@
 
 .animate-in {
   animation: animateIn 0.3s ease 0.15s both;
-
 }
 
 @keyframes animateIn {
@@ -47,15 +46,13 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
-
+  font-family: "Nunito", sans-serif;
 }
 body,
 html {
   padding: 0;
   margin: 0;
 }
-
 
 .cm-editor {
   border: 0;
@@ -80,7 +77,6 @@ html {
 .cm-editor .cm-scroller {
   display: none;
   overflow: hidden !important;
-
 }
 
 .cm-editor .cm-activeLine {

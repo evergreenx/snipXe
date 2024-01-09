@@ -34,15 +34,10 @@ export default function BGImage() {
 
   useOnClickOutside(ref, handleClickOutside);
 
-  const externalImage =
-    "https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp";
-
-  console.log(bg);
-
   var config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "https://api.unsplash.com/search/photos?query=code&client_id=6BguTKo0SLW85C-gWpQsP5WGxMvtSQfDJBXZRLi0LTE&page=1&orientation=landscape",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
     headers: {
       "Accept-Language": "en-US",
       Accept: "application/json",
