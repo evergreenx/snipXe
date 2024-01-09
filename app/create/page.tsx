@@ -259,7 +259,7 @@ export default function page() {
   }, [codeRef]);
 
   return (
-    <div className=" min-w-[90px]  max-w-[889px] mx-auto  h-screen flex justify-center items-center   p-3 ">
+    <div className=" min-w-[90px]  max-w-[1024px] mx-auto  h-screen flex justify-center items-center   p-3 ">
       <>
         <div
           ref={codeRef}
@@ -270,7 +270,7 @@ export default function page() {
             backgroundSize : 'cover',
             padding: `${Padding.v}px ${Padding.h}px`,
           }}
-          className={` w-full mx-auto my-0    `}
+          className={`  mx-auto my-0    `}
         >
           {/* code mirror */}
           <div className="relative mx-auto max-w-[100%] ">
