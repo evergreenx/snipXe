@@ -32,9 +32,11 @@ export default function BGControl() {
   return (
     <div className=" flex items-center space-x-[30px]">
       <div
-        className=" flex space-x-[8px] items-center
-        border p-[6px] rounded  border-[#DDE1E1]  w-[45px]
-        "
+        className={` flex space-x-[8px] items-center
+       p-[6px]    ${
+         colorBG.active === "c" ? " border-[#DDE1E1] rounded   border" : null
+       }     w-[45px]
+        `}
       >
         <div
           onClick={() => {
@@ -47,7 +49,14 @@ export default function BGControl() {
         ></div>
       </div>
 
-      <div className="bgbg">
+      <div
+        className={`
+      
+      p-[6px]    ${
+        colorBG.active === "i" ? " border-[#DDE1E1] rounded   border" : null
+      }     w-[45px]
+      `}
+      >
         <BGImage />
       </div>
 
