@@ -8,9 +8,9 @@ export interface controlSliceState {
   theme: string;
   mode: string;
   bg: {
-    c: string;
+    c: string | number | null;
     i: string;
-    active : 'c' | 'i'
+    active: "c" | "i";
   };
   ds: boolean;
   p: {
@@ -38,7 +38,7 @@ const initialState: controlSliceState = {
   bg: {
     c: "#ddd",
     i: "",
-    active: "c"
+    active: "c",
   },
   value: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 
@@ -73,15 +73,14 @@ export const controlSlice = createSlice({
   reducers: {
     handleBgUpdate: (state, action: PayloadAction<string>) => {
       if (state.bg) {
-
-        state.bg.active = 'c'
+        state.bg.active = "c";
         state.bg.c = action.payload as string;
       }
     },
 
     handleBgImageUpdate: (state, action: PayloadAction<string>) => {
       if (state.bg) {
-        state.bg.active = 'i'
+        state.bg.active = "i";
         state.bg.i = action.payload as string;
       }
     },

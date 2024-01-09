@@ -264,7 +264,7 @@ export default function page() {
         <div
           ref={codeRef}
           style={{
-            background: BG.c,
+            background: BG.active === 'c' ? BG.c : null,
             backgroundImage: `url(${bgImage})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
