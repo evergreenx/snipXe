@@ -10,6 +10,7 @@ import { handleBgUpdate } from "@/sm/features/control/controlSlice";
 import { useToggle } from "usehooks-ts";
 
 import ColorPicker from "react-gcolor-picker";
+import BGImage from "./BGImage";
 
 export default function BGControl() {
   const [value, toggle, setValue] = useToggle(false);
@@ -33,10 +34,10 @@ export default function BGControl() {
   const colorBG = useSelector((state: RootState) => state.control.bg);
 
   return (
-    <div className="">
+    <div className=" flex items-center space-x-[30px]">
       <div
         className=" flex space-x-[8px] items-center
-        border p-[6px] rounded  border-[#DDE1E1]  w-[200px]
+        border p-[6px] rounded  border-[#DDE1E1]  w-[45px]
         "
       >
         <div
@@ -48,17 +49,16 @@ export default function BGControl() {
           }}
           className={` w-[28px] h-[28px] cursor-pointer`}
         ></div>
+      </div>
 
-        <p className="text-base lowercase font-semibold text-[#DDE1E1]">
-          {/* {colorBG} */}
-        </p>
+      <div className="bgbg">
+    
+    <BGImage />
       </div>
 
       {value ? (
-        <div ref={ref} className="bg-white  rounded-md absolute">
+        <div ref={ref} className="bg-white  rounded-md absolute top-32 left-0 z-50">
           <ColorPicker
-      
-          
             showAlpha={false}
             gradient
             value={colorBG}
