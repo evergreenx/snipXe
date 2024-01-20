@@ -49,18 +49,27 @@ export default function HeaderClient({ session }: { session: Session | null }) {
         clone.style.transform = "scale(0)";
       });
 
-      setTimeout(() => {
-        htmlToImage.toPng(coderefstate, { fontEmbedCSS }).then((dataUrl) => {
-          document.body.removeChild(clone);
 
-          download(dataUrl, snipxName);
+      let dataUrl = '';
+      const minDataLength = 2000000;
+      let i = 0;
+      const maxAttempts = 10;
 
-          // const link = document.createElement('a');
-          // link.href = dataUrl;
-          // link.download = snipxName;
-          // link.click();
-        });
-      }, 500); // Adjust the delay to match your animation duration
+      // while (dataUrl.length < minDataLength && i < maxAttempts) {
+    
+          htmlToImage.toPng(coderefstate, { fontEmbedCSS }).then((dataUrl) => {
+            document.body.removeChild(clone);
+  
+            download(dataUrl, snipxName);
+  
+            // const link = document.createElement('a');
+            // link.href = dataUrl;
+            // link.download = snipxName;
+            // link.click();
+          });
+     
+      // }
+    // Adjust the delay to match your animation duration
     }
   };
 

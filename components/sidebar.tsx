@@ -45,7 +45,7 @@ async function Sidebar() {
   }
   return (
     <aside
-      className="w-[323px] pt-[112px]
+      className="w-[300px] pt-[112px]
 
       hidden lg:block
 
